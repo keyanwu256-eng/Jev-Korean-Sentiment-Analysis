@@ -1,0 +1,14 @@
+Official integration tests: SIMULATED HTTP, NOT a live TypeSafe API call.
+2026-11-17T13:45:36.359574+09:00
+test_http_error_is_sanitized_and_not_retried (test_jev_api.OfficialContractTests.test_http_error_is_sanitized_and_not_retried) ... ok
+test_invalid_schema_does_not_become_result (test_jev_api.OfficialContractTests.test_invalid_schema_does_not_become_result) ... ok
+test_missing_key_does_not_connect (test_jev_api.OfficialContractTests.test_missing_key_does_not_connect) ... ok
+test_network_failure_is_not_retried (test_jev_api.OfficialContractTests.test_network_failure_is_not_retried) ... ok
+test_payload_auth_and_response (test_jev_api.OfficialContractTests.test_payload_auth_and_response) ... ok
+test_ui_requires_key_and_consent_then_records_provider (test_jev_api.OfficialContractTests.test_ui_requires_key_and_consent_then_records_provider) ... 2026-11-17 13:45:35.332 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.887s
+
+OK

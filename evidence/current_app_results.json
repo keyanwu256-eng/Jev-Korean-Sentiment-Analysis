@@ -1,6 +1,7 @@
 {
-  "created_at": "2026-11-17T12:44:38.710041+09:00",
-  "app_sha256": "9a49127690f98ab99f443beeb65f895967bd5c134a6e81fc64b806d37f427f92",
+  "created_at": "2026-11-17T13:46:00.722261+09:00",
+  "app_sha256": "8241d67dc179bdf8b92c05ee29a056394b68f3bddfddb87547fa168a38bd1102",
+  "provider": "openjevx",
   "model_revision": "5399cb82a1eafad35575a6eaff5e2c5de5a8fc7e",
   "questions": {
     "overall": {
@@ -28,7 +29,7 @@
     "overall_correct": 6,
     "final_correct_against_same_overall_reference": 3
   },
-  "seconds": 111.91,
+  "seconds": 22.66,
   "rows": [
     {
       "id": 1,
