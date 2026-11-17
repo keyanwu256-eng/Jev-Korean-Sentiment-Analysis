@@ -1,0 +1,12 @@
+{
+  "frozen_at": "2026-11-17T15:40:58.652013+09:00",
+  "dataset_sha256": "c5900f55ff0a195a0ec08540f2af8fe4c08019b082e036e1778c12d46bc6a525",
+  "case_count": 36,
+  "per_category": 6,
+  "inference_started": false,
+  "primary_and_comparison_code_sha256": {
+    "app.py": "ed4065ebc12eb5db043f3c96579fd5805bd9b2206e3acf69400058d1c78053ec",
+    "sentiment_engine.py": "bc42ad9eb970b6d3ce7b19759ddb10830b5186843b35aea5dd2bf016fb4ebeaf"
+  },
+  "annotation_note": "Developer/AI-authored provisional reference labels fixed before inference; no independent human annotation."
+}
