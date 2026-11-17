@@ -15,8 +15,6 @@ python -m venv .venv
 
 ## 기능
 
-- 공식 TypeSafe Jev API / 로컬 OpenJevX 선택. 기본은 공식 모드이며 본인 API 키가 필요합니다.
-- 공식 모드 설정은 [OFFICIAL_JEV.md](OFFICIAL_JEV.md)를 참고하세요. 키가 없으면 왼쪽에서 로컬 모드를 선택할 수 있습니다.
 - 한국어 리뷰의 전체 감성과 마지막 평가 비교
 - 긍정·부정·혼합 리뷰 예시
 - 감성 확률 표시

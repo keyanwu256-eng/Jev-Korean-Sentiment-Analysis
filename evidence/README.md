@@ -1,9 +1,5 @@
 # 증거 자료 안내
 
-## 공식 API 접입 테스트
-
-`official_integration_tests.txt`는 모의 HTTP 응답을 이용한 계약 및 UI 테스트 기록이다. 실제 공식 Jev를 호출하지 않았으며 공식 모델의 정확도나 실제 계정 인증 성공을 증명하지 않는다. 공식 라이브 실행은 본인 TypeSafe 키로 별도 확인해야 한다. 현재 로컬 검증은 `verify_project.py`가 명시적으로 로컬 OpenJevX를 선택해 실행한다.
-
 ## 기존 실험 자료
 
 - `notebook_recorded_results.json`: 기존 Notebook 셀 10(0부터 센 번호)의 저장된 비교 출력. 참고 정답은 셀 12에서 추출했다. 10개, 일치 6개, 전체 정답 일치 4개, 마지막 평가의 동일 정답 일치 3개를 재집계했다.

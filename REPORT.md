@@ -6,12 +6,6 @@
 **정리일:** 2026-11-17 (한국 시간)
 **구현:** Python · Streamlit · OpenJevX · ONNX Runtime CPU
 
-## 공식 Jev API 기능 추가 — 2026-11-17
-
-사용자 요청으로 공식 TypeSafe Jev HTTP API 모드를 추가했다. 기존 화면에서 모델을 선택하고 개인 API 키 및 외부 전송·요금 안내를 확인한 뒤 동일한 두 Choice 질문을 전송한다. 키는 결과·기록·다운로드에 넣지 않으며 GitHub에도 업로드하지 않는다. API 실패 시 로컬 결과를 공식 결과처럼 표시하지 않는다.
-
-요청 모델과 응답의 실제 모델, `typesafe_official` / `openjevx` 출처를 기록하고 후보 확률과 confidence를 구분한다. 401·403·429·네트워크 실패·잘못된 응답 등의 계약 테스트와 UI 테스트는 모의 응답으로 검증했다. **실제 TypeSafe 키가 없어 공식 서버에 대한 라이브 실행은 미검증**이다. 본 보고서의 기존 10개 리뷰 수치는 모두 로컬 OpenJevX 결과이며, 공식 모드의 정확도가 아니다. [설정 안내](OFFICIAL_JEV.md)와 `evidence/official_integration_tests.txt`에 테스트 범위를 설명했다.
-
 ## 최종 복구 및 재검증 — 2026-11-17 12:44
 
 아래 본문의 오전 차단 기록 이후, 프로젝트 전용 `.venv`를 생성하고 공식 PyPI 배포 패키지를 설치했다. 기존 Conda 환경이나 Windows 보안 정책은 변경하지 않았다. 같은 버전의 NumPy·ONNX Runtime·tokenizers가 새 환경에서 정상 로딩됐고 실제 모델 분석도 복구됐다.

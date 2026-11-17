@@ -67,7 +67,6 @@ except Exception:
     failure = failure.replace(str(ROOT), "<PROJECT>")
     (OUT / "model_load_failure.txt").write_text(failure, encoding="utf-8")
     at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=90).run()
-    at.radio(key="provider").set_value("로컬 OpenJevX").run()
     assert not at.exception
     at.button[3].click().run()
     assert at.warning and not at.session_state.history
@@ -102,13 +101,12 @@ metrics = {
 (OUT / "current_app_results.json").write_text(json.dumps({
     "created_at": datetime.now(timezone(timedelta(hours=9))).isoformat(),
     "app_sha256": hashlib.sha256(source.encode()).hexdigest(),
-    "provider": "openjevx", "model_revision": namespace["MODEL_REVISION"], "questions": namespace["QUESTIONS"],
+    "model_revision": namespace["MODEL_REVISION"], "questions": namespace["QUESTIONS"],
     "metrics": metrics, "seconds": round(time.perf_counter() - started, 2), "rows": fresh,
 }, ensure_ascii=False, indent=2), encoding="utf-8")
 
 checks = []
 at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=120).run()
-at.radio(key="provider").set_value("로컬 OpenJevX").run()
 assert not at.exception
 at.button[3].click().run()
 assert at.warning and not at.session_state.history
@@ -133,7 +131,6 @@ at.button[4].click().run()
 assert not at.exception and not at.session_state.history and "latest" not in at.session_state
 checks.append("Clear history removes stored records and latest result")
 report = {"created_at": datetime.now(timezone(timedelta(hours=9))).isoformat(),
-          "provider": "openjevx", "official_live_tested": False,
           "status": "PASS", "checks": checks, "python": platform.python_version(),
           "packages": {p: version(p) for p in ["streamlit", "huggingface-hub", "numpy", "onnxruntime", "tokenizers"]},
           "app_sha256": hashlib.sha256(source.encode()).hexdigest()}
