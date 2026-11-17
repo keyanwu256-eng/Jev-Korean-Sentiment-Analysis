@@ -1,0 +1,37 @@
+{
+  "review": "음식은 정말 맛있었지만, 직원이 불친절하고 음식도 너무 늦게 나와서 다시 방문하고 싶지는 않아요.",
+  "result": {
+    "answers": {
+      "overall": {
+        "type": "choice",
+        "probabilities": {
+          "positive": 0.3413,
+          "negative": 0.2823,
+          "neutral": 0.3764
+        },
+        "confidence": 0.3764,
+        "answer_confidence": 0.3764,
+        "choice": "neutral",
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "final": {
+        "type": "choice",
+        "probabilities": {
+          "positive": 0.3793,
+          "negative": 0.2157,
+          "neutral": 0.4051
+        },
+        "confidence": 0.4051,
+        "answer_confidence": 0.4051,
+        "choice": "neutral",
+        "action": {
+          "act_probability": 1.0
+        }
+      }
+    }
+  },
+  "seconds": 11.25,
+  "created_at": "2026-11-17T12:44:50+09:00"
+}

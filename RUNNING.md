@@ -2,13 +2,16 @@
 
 Python 3.11 환경에서 실행합니다.
 
+Windows에서는 `Setup_Jev.bat`를 처음 한 번 실행하여 프로젝트 전용 `.venv`와 패키지를 준비합니다. 설치가 끝나면 `Start_Jev.bat`를 더블 클릭하세요. 이 개발 PC의 `.venv`는 2026-11-17에 설치 및 실제 모델 검증을 완료했습니다.
+
 ```bash
-python -m pip install -r requirements.txt
-python -m streamlit run app.py
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements-lock.txt
+.venv\Scripts\python.exe -m streamlit run app.py
 ```
 
 브라우저에서 http://localhost:8501 을 엽니다.
-기존 개발 PC에서는 `Start_Jev.bat`를 더블 클릭해 실행할 수 있습니다. 이 파일의 Python 경로는 해당 PC의 Conda 환경을 가리킵니다.
+`Start_Jev.bat`는 프로젝트 폴더의 `.venv`를 사용합니다. 사용 중에는 시작 창을 닫지 마세요. `CONNECTING`이면 서버 연결이 끊긴 상태이므로 시작 파일을 실행하고 브라우저를 새로고침하세요. 기존 Conda 환경은 DLL 차단 이력이 있으므로 이 프로젝트는 새 독립 환경을 사용합니다.
 
 ## 기능
 

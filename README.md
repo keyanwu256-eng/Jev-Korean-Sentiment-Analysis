@@ -2,7 +2,7 @@
 
 한국어 리뷰에 긍정과 부정이 함께 있을 때, **전체 감성**과 **마지막 평가를 중심으로 한 판단**이 어떻게 달라지는지 관찰하는 수업 프로젝트입니다. Jev 방식의 구조화된 판단 인터페이스를 사용하는 **커뮤니티 모델 OpenJevX**를 로컬 CPU에서 실행합니다. TypeSafe의 공식 Jev API를 사용한 결과는 아닙니다.
 
-> **2026-11-17 검증 상태:** 웹 페이지 렌더링, 빈 입력 처리, 예시 입력, 모델 오류 표시를 확인했습니다. 현재 개발 PC에서는 Windows 애플리케이션 제어 정책이 NumPy/BLAS DLL 로딩을 차단하여 모델 분석 재검증은 막혔습니다. 기능 구현 완료와 현재 환경의 실행 상태를 구분합니다. 자세한 기록은 [검증 결과](evidence/verification.json)와 [보고서](REPORT.md)를 참고하세요.
+> **2026-11-17 12:44 재검증: PASS.** 기존 Conda 환경의 NumPy/BLAS DLL 오류는 보존하고, 프로젝트 전용 `.venv`에 공식 PyPI 배포 패키지를 설치해 모델 실행을 복구했습니다. 실제 모델 10개 리뷰 분석과 입력·결과·기록·CSV·삭제 흐름을 검증했습니다. [검증 결과](evidence/verification.json), [현재 모델 출력](evidence/current_app_results.json), [보고서](REPORT.md)
 
 ## 구현 기능
 
@@ -19,14 +19,15 @@
 
 ## 실행
 
-Python 3.11 환경에서:
+Windows에서는 처음 한 번 `Setup_Jev.bat`를 실행하고 설치 완료 후 `Start_Jev.bat`를 더블 클릭합니다. 이 개발 PC에는 설치가 완료되어 바로 시작할 수 있습니다. Python 3.11에서 수동 설치하려면:
 
 ```bash
-python -m pip install -r requirements.txt
-python -m streamlit run app.py
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements-lock.txt
+.venv\Scripts\python.exe -m streamlit run app.py
 ```
 
-브라우저에서 `http://localhost:8501`을 엽니다. 기존 개발 PC에서는 `Start_Jev.bat`를 사용할 수 있습니다. 다른 PC에서는 해당 배치 파일의 Python 경로를 수정하거나 위 명령을 사용하세요. 최초 모델 다운로드는 약 600MB이며 공개 모델에 HF_TOKEN은 필수가 아닙니다. [자세한 실행 안내](RUNNING.md)
+브라우저에서 `http://localhost:8501`을 엽니다. 사용 중에는 시작 창을 열어 두세요. `CONNECTING` 상태가 계속되면 시작 파일로 서버를 실행한 뒤 새로고침하세요. 최초 모델 다운로드는 약 600MB이며 공개 모델에 HF_TOKEN은 필수가 아닙니다. [자세한 실행 안내](RUNNING.md)
 
 ## 실험 결과와 해석
 
@@ -56,10 +57,10 @@ python -m streamlit run app.py
 
 환경 복구 후 저장소 폴더에서 `python verify_project.py`를 실행하면 현재 앱의 질문·모델 버전·출력·검증 결과를 기록합니다. 현재 환경이 차단되면 실패 증거와 `BLOCKED_MODEL_LOAD` 상태를 저장합니다. 이 스크립트는 Notebook 전체 셀을 순서대로 실행하지 않습니다.
 
-## 남은 작업
+## 현재 앱 재검증 및 향후 개선
 
-1. Windows가 허용하는 NumPy/BLAS 실행 환경을 확보한 뒤 모델 분석·다운로드·기록 삭제까지 재검증
-2. 성공한 실제 결과 화면과 내보낸 CSV/JSON 증거 추가
-3. 필요하면 별도의 정답 검수와 더 큰 한국어 평가셋으로 성능 측정
+현재 앱의 질문으로 10개 리뷰를 새로 실행한 결과는 판단 일치 6/10, 전체 감성의 기존 참고 정답 일치 6/10, 마지막 평가의 동일 전체 감성 참고 정답 일치 3/10이었습니다. 기존 Notebook과 질문 문구가 다르므로 별도의 실험입니다. [원본 출력](evidence/current_app_results.json), [실제 샘플 CSV](evidence/sample_history.csv), [실제 샘플 JSON](evidence/sample_result.json)을 제공합니다.
+
+성공한 현재 결과 화면의 브라우저 캡처는 아직 추가하지 않았습니다. 브라우저 자동 조작이 사용자 Esc 입력으로 중단되어 자동 테스트 증거와 실제 출력 파일로 검증했습니다. 더 큰 평가셋과 독립적인 마지막 평가 정답 검수는 향후 개선 사항입니다.
 
 원격 웹 서비스 배포는 수행하지 않았습니다. 모델 확률은 정확도를 보장하지 않으며 결과를 자동 의사결정에 사용하지 않습니다.

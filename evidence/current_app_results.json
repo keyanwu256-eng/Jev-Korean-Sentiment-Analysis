@@ -1,0 +1,404 @@
+{
+  "created_at": "2026-11-17T12:44:38.710041+09:00",
+  "app_sha256": "9a49127690f98ab99f443beeb65f895967bd5c134a6e81fc64b806d37f427f92",
+  "model_revision": "5399cb82a1eafad35575a6eaff5e2c5de5a8fc7e",
+  "questions": {
+    "overall": {
+      "type": "choice",
+      "instructions": "리뷰의 전체적인 내용을 기준으로 감성을 판단하세요.",
+      "criteria": {
+        "positive": "전체적으로 긍정적인 평가",
+        "negative": "전체적으로 부정적인 평가",
+        "neutral": "긍정과 부정이 혼합되거나 중립적인 평가"
+      }
+    },
+    "final": {
+      "type": "choice",
+      "instructions": "리뷰의 마지막 평가를 중심으로 감성을 판단하세요.",
+      "criteria": {
+        "positive": "마지막 평가가 긍정적임",
+        "negative": "마지막 평가가 부정적임",
+        "neutral": "마지막 평가가 중립적이거나 불분명함"
+      }
+    }
+  },
+  "metrics": {
+    "count": 10,
+    "matches": 6,
+    "overall_correct": 6,
+    "final_correct_against_same_overall_reference": 3
+  },
+  "seconds": 111.91,
+  "rows": [
+    {
+      "id": 1,
+      "review": "음식은 맛있었지만 서비스가 너무 느렸어요.",
+      "reference_label": "중립",
+      "result": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3294,
+              "negative": 0.2321,
+              "neutral": 0.4385
+            },
+            "confidence": 0.4385,
+            "answer_confidence": 0.4385,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3011,
+              "negative": 0.2263,
+              "neutral": 0.4726
+            },
+            "confidence": 0.4726,
+            "answer_confidence": 0.4726,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "review": "가격은 비싸지만 품질은 정말 좋아요.",
+      "reference_label": "긍정",
+      "result": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4263,
+              "negative": 0.25,
+              "neutral": 0.3237
+            },
+            "confidence": 0.4263,
+            "answer_confidence": 0.4263,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.5064,
+              "negative": 0.2158,
+              "neutral": 0.2777
+            },
+            "confidence": 0.5064,
+            "answer_confidence": 0.5064,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 3,
+      "review": "배송은 빨랐지만 제품이 파손되어 있었어요.",
+      "reference_label": "부정",
+      "result": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3588,
+              "negative": 0.3611,
+              "neutral": 0.2801
+            },
+            "confidence": 0.3611,
+            "answer_confidence": 0.3611,
+            "choice": "negative",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4142,
+              "negative": 0.2615,
+              "neutral": 0.3244
+            },
+            "confidence": 0.4142,
+            "answer_confidence": 0.4142,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 4,
+      "review": "직원은 친절했지만 매장이 너무 시끄러웠어요.",
+      "reference_label": "중립",
+      "result": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3846,
+              "negative": 0.2752,
+              "neutral": 0.3402
+            },
+            "confidence": 0.3846,
+            "answer_confidence": 0.3846,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4326,
+              "negative": 0.2264,
+              "neutral": 0.341
+            },
+            "confidence": 0.4326,
+            "answer_confidence": 0.4326,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 5,
+      "review": "디자인은 예쁘지만 사용하기 불편해요.",
+      "reference_label": "부정",
+      "result": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4082,
+              "negative": 0.2617,
+              "neutral": 0.3301
+            },
+            "confidence": 0.4082,
+            "answer_confidence": 0.4082,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3942,
+              "negative": 0.2317,
+              "neutral": 0.3741
+            },
+            "confidence": 0.3942,
+            "answer_confidence": 0.3942,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 6,
+      "review": "맛도 좋고 서비스도 정말 만족스러웠어요.",
+      "reference_label": "긍정",
+      "result": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3591,
+              "negative": 0.2563,
+              "neutral": 0.3846
+            },
+            "confidence": 0.3846,
+            "answer_confidence": 0.3846,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3962,
+              "negative": 0.195,
+              "neutral": 0.4088
+            },
+            "confidence": 0.4088,
+            "answer_confidence": 0.4088,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 7,
+      "review": "가격도 비싸고 품질도 좋지 않았어요.",
+      "reference_label": "부정",
+      "result": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3329,
+              "negative": 0.2514,
+              "neutral": 0.4157
+            },
+            "confidence": 0.4157,
+            "answer_confidence": 0.4157,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4575,
+              "negative": 0.2461,
+              "neutral": 0.2965
+            },
+            "confidence": 0.4575,
+            "answer_confidence": 0.4575,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 8,
+      "review": "배송은 느렸지만 포장이 아주 꼼꼼했어요.",
+      "reference_label": "중립",
+      "result": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3155,
+              "negative": 0.3067,
+              "neutral": 0.3779
+            },
+            "confidence": 0.3779,
+            "answer_confidence": 0.3779,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3632,
+              "negative": 0.2414,
+              "neutral": 0.3954
+            },
+            "confidence": 0.3954,
+            "answer_confidence": 0.3954,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 9,
+      "review": "시설은 깨끗했지만 위치가 너무 멀었어요.",
+      "reference_label": "중립",
+      "result": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3442,
+              "negative": 0.2988,
+              "neutral": 0.357
+            },
+            "confidence": 0.357,
+            "answer_confidence": 0.357,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4351,
+              "negative": 0.2569,
+              "neutral": 0.3079
+            },
+            "confidence": 0.4351,
+            "answer_confidence": 0.4351,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 10,
+      "review": "기대보다 별로였지만 직원들은 친절했어요.",
+      "reference_label": "중립",
+      "result": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3422,
+              "negative": 0.2701,
+              "neutral": 0.3877
+            },
+            "confidence": 0.3877,
+            "answer_confidence": 0.3877,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.5167,
+              "negative": 0.2105,
+              "neutral": 0.2729
+            },
+            "confidence": 0.5167,
+            "answer_confidence": 0.5167,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        }
+      }
+    }
+  ]
+}
