@@ -1,0 +1,4737 @@
+{
+  "suite_id": "korean-six-types-v2",
+  "started_at": "2026-11-17T15:43:12.163758+09:00",
+  "completed_at": "2026-11-17T15:45:20.383977+09:00",
+  "dataset_sha256": "c5900f55ff0a195a0ec08540f2af8fe4c08019b082e036e1778c12d46bc6a525",
+  "freeze": {
+    "frozen_at": "2026-11-17T15:40:58.652013+09:00",
+    "dataset_sha256": "c5900f55ff0a195a0ec08540f2af8fe4c08019b082e036e1778c12d46bc6a525",
+    "case_count": 36,
+    "per_category": 6,
+    "inference_started": false,
+    "primary_and_comparison_code_sha256": {
+      "app.py": "ed4065ebc12eb5db043f3c96579fd5805bd9b2206e3acf69400058d1c78053ec",
+      "sentiment_engine.py": "bc42ad9eb970b6d3ce7b19759ddb10830b5186843b35aea5dd2bf016fb4ebeaf"
+    },
+    "annotation_note": "Developer/AI-authored provisional reference labels fixed before inference; no independent human annotation."
+  },
+  "policy": {
+    "cases_per_category": 6,
+    "categories": [
+      "positive",
+      "negative",
+      "neutral",
+      "mixed",
+      "sarcasm",
+      "indirect_dissatisfaction"
+    ],
+    "primary_scored_target": "overall three-class reference agreement; all predictions counted, including abstentions",
+    "mixed_reference_convention": "For intentionally balanced pros and cons without an explicit overall decision, overall reference is neutral. This convention is subjective and not satisfaction accuracy.",
+    "final_targets": "Score standalone final-sentence sentiment separately from contextual ending intent; disagreement may be expected.",
+    "composition_target": "whether explicit positive and negative sentences coexist in literal wording; not sarcasm understanding",
+    "abstention_policy": "Existing max probability <0.65 or top-two margin <0.15; never tuned on this suite",
+    "known_failure_cases": "Previously shown screenshots and previous smoke-test sentences are excluded; category patterns are familiar, so this is not a blind independent benchmark."
+  },
+  "primary_model": "Horizon-Labs/multilingual-sentiment-small",
+  "primary_revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+  "openjevx_model": "muthuishere/openjevx",
+  "openjevx_revision": "5399cb82a1eafad35575a6eaff5e2c5de5a8fc7e",
+  "model_code_changed": false,
+  "official_api_used": false,
+  "total": {
+    "primary": {
+      "overall": {
+        "count": 36,
+        "correct": 28,
+        "reference_agreement": 0.7777777777777778,
+        "accepted_count": 34,
+        "coverage": 0.9444444444444444,
+        "accepted_correct": 27,
+        "high_confidence_disagreements": []
+      },
+      "final_standalone": {
+        "count": 36,
+        "correct": 35,
+        "reference_agreement": 0.9722222222222222,
+        "accepted_count": 35,
+        "coverage": 0.9722222222222222,
+        "accepted_correct": 34,
+        "high_confidence_disagreements": []
+      },
+      "final_contextual_intent": {
+        "count": 36,
+        "correct": 25,
+        "reference_agreement": 0.6944444444444444,
+        "accepted_count": 35,
+        "coverage": 0.9722222222222222,
+        "accepted_correct": 25,
+        "high_confidence_disagreements": [
+          "S01",
+          "S02",
+          "S04",
+          "S05",
+          "S06",
+          "I04",
+          "I05"
+        ]
+      }
+    },
+    "openjevx": {
+      "overall": {
+        "count": 36,
+        "correct": 13,
+        "reference_agreement": 0.3611111111111111,
+        "accepted_count": 0,
+        "coverage": 0.0,
+        "accepted_correct": 0,
+        "high_confidence_disagreements": []
+      },
+      "final_standalone": {
+        "count": 36,
+        "correct": 18,
+        "reference_agreement": 0.5,
+        "accepted_count": 1,
+        "coverage": 0.027777777777777776,
+        "accepted_correct": 1,
+        "high_confidence_disagreements": []
+      },
+      "final_contextual_intent": {
+        "count": 36,
+        "correct": 10,
+        "reference_agreement": 0.2777777777777778,
+        "accepted_count": 1,
+        "coverage": 0.027777777777777776,
+        "accepted_correct": 0,
+        "high_confidence_disagreements": []
+      }
+    }
+  },
+  "by_category": {
+    "positive": {
+      "primary": {
+        "overall": {
+          "count": 6,
+          "correct": 6,
+          "reference_agreement": 1.0,
+          "accepted_count": 6,
+          "coverage": 1.0,
+          "accepted_correct": 6,
+          "high_confidence_disagreements": []
+        },
+        "final_standalone": {
+          "count": 6,
+          "correct": 6,
+          "reference_agreement": 1.0,
+          "accepted_count": 6,
+          "coverage": 1.0,
+          "accepted_correct": 6,
+          "high_confidence_disagreements": []
+        },
+        "final_contextual_intent": {
+          "count": 6,
+          "correct": 6,
+          "reference_agreement": 1.0,
+          "accepted_count": 6,
+          "coverage": 1.0,
+          "accepted_correct": 6,
+          "high_confidence_disagreements": []
+        }
+      },
+      "openjevx": {
+        "overall": {
+          "count": 6,
+          "correct": 4,
+          "reference_agreement": 0.6666666666666666,
+          "accepted_count": 0,
+          "coverage": 0.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        },
+        "final_standalone": {
+          "count": 6,
+          "correct": 5,
+          "reference_agreement": 0.8333333333333334,
+          "accepted_count": 0,
+          "coverage": 0.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        },
+        "final_contextual_intent": {
+          "count": 6,
+          "correct": 5,
+          "reference_agreement": 0.8333333333333334,
+          "accepted_count": 0,
+          "coverage": 0.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        }
+      }
+    },
+    "negative": {
+      "primary": {
+        "overall": {
+          "count": 6,
+          "correct": 6,
+          "reference_agreement": 1.0,
+          "accepted_count": 6,
+          "coverage": 1.0,
+          "accepted_correct": 6,
+          "high_confidence_disagreements": []
+        },
+        "final_standalone": {
+          "count": 6,
+          "correct": 6,
+          "reference_agreement": 1.0,
+          "accepted_count": 6,
+          "coverage": 1.0,
+          "accepted_correct": 6,
+          "high_confidence_disagreements": []
+        },
+        "final_contextual_intent": {
+          "count": 6,
+          "correct": 6,
+          "reference_agreement": 1.0,
+          "accepted_count": 6,
+          "coverage": 1.0,
+          "accepted_correct": 6,
+          "high_confidence_disagreements": []
+        }
+      },
+      "openjevx": {
+        "overall": {
+          "count": 6,
+          "correct": 0,
+          "reference_agreement": 0.0,
+          "accepted_count": 0,
+          "coverage": 0.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        },
+        "final_standalone": {
+          "count": 6,
+          "correct": 0,
+          "reference_agreement": 0.0,
+          "accepted_count": 0,
+          "coverage": 0.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        },
+        "final_contextual_intent": {
+          "count": 6,
+          "correct": 0,
+          "reference_agreement": 0.0,
+          "accepted_count": 0,
+          "coverage": 0.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        }
+      }
+    },
+    "neutral": {
+      "primary": {
+        "overall": {
+          "count": 6,
+          "correct": 6,
+          "reference_agreement": 1.0,
+          "accepted_count": 6,
+          "coverage": 1.0,
+          "accepted_correct": 6,
+          "high_confidence_disagreements": []
+        },
+        "final_standalone": {
+          "count": 6,
+          "correct": 6,
+          "reference_agreement": 1.0,
+          "accepted_count": 6,
+          "coverage": 1.0,
+          "accepted_correct": 6,
+          "high_confidence_disagreements": []
+        },
+        "final_contextual_intent": {
+          "count": 6,
+          "correct": 6,
+          "reference_agreement": 1.0,
+          "accepted_count": 6,
+          "coverage": 1.0,
+          "accepted_correct": 6,
+          "high_confidence_disagreements": []
+        }
+      },
+      "openjevx": {
+        "overall": {
+          "count": 6,
+          "correct": 6,
+          "reference_agreement": 1.0,
+          "accepted_count": 0,
+          "coverage": 0.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        },
+        "final_standalone": {
+          "count": 6,
+          "correct": 4,
+          "reference_agreement": 0.6666666666666666,
+          "accepted_count": 0,
+          "coverage": 0.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        },
+        "final_contextual_intent": {
+          "count": 6,
+          "correct": 4,
+          "reference_agreement": 0.6666666666666666,
+          "accepted_count": 0,
+          "coverage": 0.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        }
+      }
+    },
+    "mixed": {
+      "primary": {
+        "overall": {
+          "count": 6,
+          "correct": 3,
+          "reference_agreement": 0.5,
+          "accepted_count": 4,
+          "coverage": 0.6666666666666666,
+          "accepted_correct": 2,
+          "high_confidence_disagreements": []
+        },
+        "final_standalone": {
+          "count": 6,
+          "correct": 6,
+          "reference_agreement": 1.0,
+          "accepted_count": 6,
+          "coverage": 1.0,
+          "accepted_correct": 6,
+          "high_confidence_disagreements": []
+        },
+        "final_contextual_intent": {
+          "count": 6,
+          "correct": 6,
+          "reference_agreement": 1.0,
+          "accepted_count": 6,
+          "coverage": 1.0,
+          "accepted_correct": 6,
+          "high_confidence_disagreements": []
+        }
+      },
+      "openjevx": {
+        "overall": {
+          "count": 6,
+          "correct": 3,
+          "reference_agreement": 0.5,
+          "accepted_count": 0,
+          "coverage": 0.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        },
+        "final_standalone": {
+          "count": 6,
+          "correct": 1,
+          "reference_agreement": 0.16666666666666666,
+          "accepted_count": 0,
+          "coverage": 0.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        },
+        "final_contextual_intent": {
+          "count": 6,
+          "correct": 1,
+          "reference_agreement": 0.16666666666666666,
+          "accepted_count": 0,
+          "coverage": 0.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        }
+      }
+    },
+    "sarcasm": {
+      "primary": {
+        "overall": {
+          "count": 6,
+          "correct": 2,
+          "reference_agreement": 0.3333333333333333,
+          "accepted_count": 6,
+          "coverage": 1.0,
+          "accepted_correct": 2,
+          "high_confidence_disagreements": []
+        },
+        "final_standalone": {
+          "count": 6,
+          "correct": 6,
+          "reference_agreement": 1.0,
+          "accepted_count": 6,
+          "coverage": 1.0,
+          "accepted_correct": 6,
+          "high_confidence_disagreements": []
+        },
+        "final_contextual_intent": {
+          "count": 6,
+          "correct": 0,
+          "reference_agreement": 0.0,
+          "accepted_count": 6,
+          "coverage": 1.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": [
+            "S01",
+            "S02",
+            "S04",
+            "S05",
+            "S06"
+          ]
+        }
+      },
+      "openjevx": {
+        "overall": {
+          "count": 6,
+          "correct": 0,
+          "reference_agreement": 0.0,
+          "accepted_count": 0,
+          "coverage": 0.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        },
+        "final_standalone": {
+          "count": 6,
+          "correct": 6,
+          "reference_agreement": 1.0,
+          "accepted_count": 1,
+          "coverage": 0.16666666666666666,
+          "accepted_correct": 1,
+          "high_confidence_disagreements": []
+        },
+        "final_contextual_intent": {
+          "count": 6,
+          "correct": 0,
+          "reference_agreement": 0.0,
+          "accepted_count": 1,
+          "coverage": 0.16666666666666666,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        }
+      }
+    },
+    "indirect_dissatisfaction": {
+      "primary": {
+        "overall": {
+          "count": 6,
+          "correct": 5,
+          "reference_agreement": 0.8333333333333334,
+          "accepted_count": 6,
+          "coverage": 1.0,
+          "accepted_correct": 5,
+          "high_confidence_disagreements": []
+        },
+        "final_standalone": {
+          "count": 6,
+          "correct": 5,
+          "reference_agreement": 0.8333333333333334,
+          "accepted_count": 5,
+          "coverage": 0.8333333333333334,
+          "accepted_correct": 4,
+          "high_confidence_disagreements": []
+        },
+        "final_contextual_intent": {
+          "count": 6,
+          "correct": 1,
+          "reference_agreement": 0.16666666666666666,
+          "accepted_count": 5,
+          "coverage": 0.8333333333333334,
+          "accepted_correct": 1,
+          "high_confidence_disagreements": [
+            "I04",
+            "I05"
+          ]
+        }
+      },
+      "openjevx": {
+        "overall": {
+          "count": 6,
+          "correct": 0,
+          "reference_agreement": 0.0,
+          "accepted_count": 0,
+          "coverage": 0.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        },
+        "final_standalone": {
+          "count": 6,
+          "correct": 2,
+          "reference_agreement": 0.3333333333333333,
+          "accepted_count": 0,
+          "coverage": 0.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        },
+        "final_contextual_intent": {
+          "count": 6,
+          "correct": 0,
+          "reference_agreement": 0.0,
+          "accepted_count": 0,
+          "coverage": 0.0,
+          "accepted_correct": 0,
+          "high_confidence_disagreements": []
+        }
+      }
+    }
+  },
+  "mixed_composition": {
+    "count": 6,
+    "confirmed": 5,
+    "uncertain": 1,
+    "not_observed": 0
+  },
+  "rows": [
+    {
+      "id": "P01",
+      "category": "positive",
+      "text": "수선한 가방의 박음질이 아주 깔끔해요. 맡기길 잘했다는 생각이 듭니다.",
+      "overall_reference": "positive",
+      "final_standalone_reference": "positive",
+      "final_contextual_reference": "positive",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9890295267105103,
+            "probabilities": {
+              "negative": 0.0033238211181014776,
+              "neutral": 0.007646688260138035,
+              "positive": 0.9890295267105103
+            },
+            "tokens": 33,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.90883469581604,
+            "probabilities": {
+              "negative": 0.020814573392271996,
+              "neutral": 0.07035067677497864,
+              "positive": 0.90883469581604
+            },
+            "tokens": 15,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "수선한 가방의 박음질이 아주 깔끔해요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9823684096336365,
+            "probabilities": {
+              "negative": 0.0059102545492351055,
+              "neutral": 0.0117212925106287,
+              "positive": 0.9823684096336365
+            },
+            "tokens": 20,
+            "truncated": false
+          },
+          {
+            "text": "맡기길 잘했다는 생각이 듭니다.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.90883469581604,
+            "probabilities": {
+              "negative": 0.020814573392271996,
+              "neutral": 0.07035067677497864,
+              "positive": 0.90883469581604
+            },
+            "tokens": 15,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "맡기길 잘했다는 생각이 듭니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3129,
+              "negative": 0.2196,
+              "neutral": 0.4676
+            },
+            "confidence": 0.4676,
+            "answer_confidence": 0.4676,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4331,
+              "negative": 0.2328,
+              "neutral": 0.3342
+            },
+            "confidence": 0.4331,
+            "answer_confidence": 0.4331,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "맡기길 잘했다는 생각이 듭니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.08429730002535507,
+      "comparison_seconds": 1.7064672999549657
+    },
+    {
+      "id": "P02",
+      "category": "positive",
+      "text": "전시 해설이 흥미롭고 아이들의 질문에도 성실하게 답해 주셨어요. 가족 모두 즐거운 시간을 보냈습니다.",
+      "overall_reference": "positive",
+      "final_standalone_reference": "positive",
+      "final_contextual_reference": "positive",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9998289346694946,
+            "probabilities": {
+              "negative": 8.713910938240588e-05,
+              "neutral": 8.39193889987655e-05,
+              "positive": 0.9998289346694946
+            },
+            "tokens": 41,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9981895089149475,
+            "probabilities": {
+              "negative": 0.0004568089498206973,
+              "neutral": 0.001353735919110477,
+              "positive": 0.9981895089149475
+            },
+            "tokens": 15,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "전시 해설이 흥미롭고 아이들의 질문에도 성실하게 답해 주셨어요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9990251064300537,
+            "probabilities": {
+              "negative": 0.00031796429539099336,
+              "neutral": 0.0006569735123775899,
+              "positive": 0.9990251064300537
+            },
+            "tokens": 28,
+            "truncated": false
+          },
+          {
+            "text": "가족 모두 즐거운 시간을 보냈습니다.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9981895089149475,
+            "probabilities": {
+              "negative": 0.0004568089498206973,
+              "neutral": 0.001353735919110477,
+              "positive": 0.9981895089149475
+            },
+            "tokens": 15,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "가족 모두 즐거운 시간을 보냈습니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3902,
+              "negative": 0.2901,
+              "neutral": 0.3197
+            },
+            "confidence": 0.3902,
+            "answer_confidence": 0.3902,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.5506,
+              "negative": 0.1811,
+              "neutral": 0.2683
+            },
+            "confidence": 0.5506,
+            "answer_confidence": 0.5506,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "가족 모두 즐거운 시간을 보냈습니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.13542149995919317,
+      "comparison_seconds": 1.8140397000242956
+    },
+    {
+      "id": "P03",
+      "category": "positive",
+      "text": "이어폰이 귀에 편하게 맞고 통화 소리도 또렷해요. 매일 쓰기 좋은 제품입니다.",
+      "overall_reference": "positive",
+      "final_standalone_reference": "positive",
+      "final_contextual_reference": "positive",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9985895752906799,
+            "probabilities": {
+              "negative": 0.0005812848685309291,
+              "neutral": 0.0008291453123092651,
+              "positive": 0.9985895752906799
+            },
+            "tokens": 31,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9717668294906616,
+            "probabilities": {
+              "negative": 0.002858530031517148,
+              "neutral": 0.025374649092555046,
+              "positive": 0.9717668294906616
+            },
+            "tokens": 11,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "이어폰이 귀에 편하게 맞고 통화 소리도 또렷해요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.8974629044532776,
+            "probabilities": {
+              "negative": 0.0376654788851738,
+              "neutral": 0.06487160176038742,
+              "positive": 0.8974629044532776
+            },
+            "tokens": 22,
+            "truncated": false
+          },
+          {
+            "text": "매일 쓰기 좋은 제품입니다.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9717668294906616,
+            "probabilities": {
+              "negative": 0.002858530031517148,
+              "neutral": 0.025374649092555046,
+              "positive": 0.9717668294906616
+            },
+            "tokens": 11,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "매일 쓰기 좋은 제품입니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4066,
+              "negative": 0.209,
+              "neutral": 0.3844
+            },
+            "confidence": 0.4066,
+            "answer_confidence": 0.4066,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.487,
+              "negative": 0.1419,
+              "neutral": 0.3711
+            },
+            "confidence": 0.487,
+            "answer_confidence": 0.487,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "매일 쓰기 좋은 제품입니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.11285099998349324,
+      "comparison_seconds": 2.605551899992861
+    },
+    {
+      "id": "P04",
+      "category": "positive",
+      "text": "헬스장 기구가 잘 관리되어 있고 운동 공간도 쾌적해요. 등록한 뒤로 운동하는 시간이 즐거워졌어요.",
+      "overall_reference": "positive",
+      "final_standalone_reference": "positive",
+      "final_contextual_reference": "positive",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9997757077217102,
+            "probabilities": {
+              "negative": 8.818958303891122e-05,
+              "neutral": 0.00013614736963063478,
+              "positive": 0.9997757077217102
+            },
+            "tokens": 42,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9982597231864929,
+            "probabilities": {
+              "negative": 0.00038517493521794677,
+              "neutral": 0.0013550794683396816,
+              "positive": 0.9982597231864929
+            },
+            "tokens": 19,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "헬스장 기구가 잘 관리되어 있고 운동 공간도 쾌적해요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9981309771537781,
+            "probabilities": {
+              "negative": 0.00041118008084595203,
+              "neutral": 0.0014578306581825018,
+              "positive": 0.9981309771537781
+            },
+            "tokens": 25,
+            "truncated": false
+          },
+          {
+            "text": "등록한 뒤로 운동하는 시간이 즐거워졌어요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9982597231864929,
+            "probabilities": {
+              "negative": 0.00038517493521794677,
+              "neutral": 0.0013550794683396816,
+              "positive": 0.9982597231864929
+            },
+            "tokens": 19,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "등록한 뒤로 운동하는 시간이 즐거워졌어요.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3532,
+              "negative": 0.3125,
+              "neutral": 0.3343
+            },
+            "confidence": 0.3532,
+            "answer_confidence": 0.3532,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3807,
+              "negative": 0.2268,
+              "neutral": 0.3925
+            },
+            "confidence": 0.3925,
+            "answer_confidence": 0.3925,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "등록한 뒤로 운동하는 시간이 즐거워졌어요."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.39572740002768114,
+      "comparison_seconds": 2.727570299990475
+    },
+    {
+      "id": "P05",
+      "category": "positive",
+      "text": "번역된 설명이 자연스럽고 예시도 알기 쉽게 정리되어 있어요. 공부에 큰 도움이 되는 책입니다.",
+      "overall_reference": "positive",
+      "final_standalone_reference": "positive",
+      "final_contextual_reference": "positive",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9997850060462952,
+            "probabilities": {
+              "negative": 9.060307638719678e-05,
+              "neutral": 0.00012436709948815405,
+              "positive": 0.9997850060462952
+            },
+            "tokens": 38,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9904266595840454,
+            "probabilities": {
+              "negative": 0.0014602593146264553,
+              "neutral": 0.008113020099699497,
+              "positive": 0.9904266595840454
+            },
+            "tokens": 14,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "번역된 설명이 자연스럽고 예시도 알기 쉽게 정리되어 있어요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9944826364517212,
+            "probabilities": {
+              "negative": 0.0007919580093584955,
+              "neutral": 0.004725443199276924,
+              "positive": 0.9944826364517212
+            },
+            "tokens": 26,
+            "truncated": false
+          },
+          {
+            "text": "공부에 큰 도움이 되는 책입니다.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9904266595840454,
+            "probabilities": {
+              "negative": 0.0014602593146264553,
+              "neutral": 0.008113020099699497,
+              "positive": 0.9904266595840454
+            },
+            "tokens": 14,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "공부에 큰 도움이 되는 책입니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3115,
+              "negative": 0.3418,
+              "neutral": 0.3467
+            },
+            "confidence": 0.3467,
+            "answer_confidence": 0.3467,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4557,
+              "negative": 0.2174,
+              "neutral": 0.3269
+            },
+            "confidence": 0.4557,
+            "answer_confidence": 0.4557,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "공부에 큰 도움이 되는 책입니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.13413079996826127,
+      "comparison_seconds": 1.6421871000202373
+    },
+    {
+      "id": "P06",
+      "category": "positive",
+      "text": "공항까지 가는 길이 편안했고 기사님도 안전하게 운전해 주셨어요. 덕분에 여행을 기분 좋게 시작했습니다.",
+      "overall_reference": "positive",
+      "final_standalone_reference": "positive",
+      "final_contextual_reference": "positive",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9995558857917786,
+            "probabilities": {
+              "negative": 0.00015417860413435847,
+              "neutral": 0.000289949937723577,
+              "positive": 0.9995558857917786
+            },
+            "tokens": 42,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9986779093742371,
+            "probabilities": {
+              "negative": 0.0003072669787798077,
+              "neutral": 0.0010148367146030068,
+              "positive": 0.9986779093742371
+            },
+            "tokens": 16,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "공항까지 가는 길이 편안했고 기사님도 안전하게 운전해 주셨어요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9973356127738953,
+            "probabilities": {
+              "negative": 0.0007109539583325386,
+              "neutral": 0.001953424885869026,
+              "positive": 0.9973356127738953
+            },
+            "tokens": 28,
+            "truncated": false
+          },
+          {
+            "text": "덕분에 여행을 기분 좋게 시작했습니다.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9986779093742371,
+            "probabilities": {
+              "negative": 0.0003072669787798077,
+              "neutral": 0.0010148367146030068,
+              "positive": 0.9986779093742371
+            },
+            "tokens": 16,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "덕분에 여행을 기분 좋게 시작했습니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4792,
+              "negative": 0.2239,
+              "neutral": 0.2969
+            },
+            "confidence": 0.4792,
+            "answer_confidence": 0.4792,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4987,
+              "negative": 0.1812,
+              "neutral": 0.3202
+            },
+            "confidence": 0.4987,
+            "answer_confidence": 0.4987,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "덕분에 여행을 기분 좋게 시작했습니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.23839389998465776,
+      "comparison_seconds": 3.648979199992027
+    },
+    {
+      "id": "N01",
+      "category": "negative",
+      "text": "수리한 시계가 같은 증상으로 또 멈췄어요. 수리비만 버린 것 같아 속상합니다.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "negative",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9994577765464783,
+            "probabilities": {
+              "negative": 0.9994577765464783,
+              "neutral": 0.00048209569649770856,
+              "positive": 6.0167698393343017e-05
+            },
+            "tokens": 32,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9970279335975647,
+            "probabilities": {
+              "negative": 0.9970279335975647,
+              "neutral": 0.00229284493252635,
+              "positive": 0.0006792894564568996
+            },
+            "tokens": 15,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "수리한 시계가 같은 증상으로 또 멈췄어요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.8496711850166321,
+            "probabilities": {
+              "negative": 0.8496711850166321,
+              "neutral": 0.1295684427022934,
+              "positive": 0.020760415121912956
+            },
+            "tokens": 19,
+            "truncated": false
+          },
+          {
+            "text": "수리비만 버린 것 같아 속상합니다.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9970279335975647,
+            "probabilities": {
+              "negative": 0.9970279335975647,
+              "neutral": 0.00229284493252635,
+              "positive": 0.0006792894564568996
+            },
+            "tokens": 15,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "수리비만 버린 것 같아 속상합니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.407,
+              "negative": 0.2424,
+              "neutral": 0.3506
+            },
+            "confidence": 0.407,
+            "answer_confidence": 0.407,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4982,
+              "negative": 0.2325,
+              "neutral": 0.2693
+            },
+            "confidence": 0.4982,
+            "answer_confidence": 0.4982,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "수리비만 버린 것 같아 속상합니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.10754950001137331,
+      "comparison_seconds": 1.6183947999961674
+    },
+    {
+      "id": "N02",
+      "category": "negative",
+      "text": "공연장 좌석에서 무대가 거의 보이지 않았어요. 돈을 내고 이런 자리에 앉아야 해서 불쾌했습니다.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "negative",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9978565573692322,
+            "probabilities": {
+              "negative": 0.9978565573692322,
+              "neutral": 0.0018833520589396358,
+              "positive": 0.00025998055934906006
+            },
+            "tokens": 41,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9919959902763367,
+            "probabilities": {
+              "negative": 0.9919959902763367,
+              "neutral": 0.00681906845420599,
+              "positive": 0.0011849126312881708
+            },
+            "tokens": 22,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "공연장 좌석에서 무대가 거의 보이지 않았어요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.48711010813713074,
+            "probabilities": {
+              "negative": 0.48711010813713074,
+              "neutral": 0.46539178490638733,
+              "positive": 0.047498054802417755
+            },
+            "tokens": 21,
+            "truncated": false
+          },
+          {
+            "text": "돈을 내고 이런 자리에 앉아야 해서 불쾌했습니다.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9919959902763367,
+            "probabilities": {
+              "negative": 0.9919959902763367,
+              "neutral": 0.00681906845420599,
+              "positive": 0.0011849126312881708
+            },
+            "tokens": 22,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "돈을 내고 이런 자리에 앉아야 해서 불쾌했습니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4348,
+              "negative": 0.2452,
+              "neutral": 0.32
+            },
+            "confidence": 0.4348,
+            "answer_confidence": 0.4348,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4694,
+              "negative": 0.2193,
+              "neutral": 0.3113
+            },
+            "confidence": 0.4694,
+            "answer_confidence": 0.4694,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "돈을 내고 이런 자리에 앉아야 해서 불쾌했습니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "insufficient_evidence",
+        "counts": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 0,
+          "uncertain": 1
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.13588750001508743,
+      "comparison_seconds": 2.162538599979598
+    },
+    {
+      "id": "N03",
+      "category": "negative",
+      "text": "스피커에서 잡음이 계속 나고 연결도 자주 끊겨요. 제품 품질에 매우 실망했습니다.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "negative",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9997974038124084,
+            "probabilities": {
+              "negative": 0.9997974038124084,
+              "neutral": 0.00017664988990873098,
+              "positive": 2.601881351438351e-05
+            },
+            "tokens": 34,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9970884919166565,
+            "probabilities": {
+              "negative": 0.9970884919166565,
+              "neutral": 0.0021518662106245756,
+              "positive": 0.0007595988572575152
+            },
+            "tokens": 13,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "스피커에서 잡음이 계속 나고 연결도 자주 끊겨요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9842429161071777,
+            "probabilities": {
+              "negative": 0.9842429161071777,
+              "neutral": 0.015115936286747456,
+              "positive": 0.0006410490022972226
+            },
+            "tokens": 23,
+            "truncated": false
+          },
+          {
+            "text": "제품 품질에 매우 실망했습니다.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9970884919166565,
+            "probabilities": {
+              "negative": 0.9970884919166565,
+              "neutral": 0.0021518662106245756,
+              "positive": 0.0007595988572575152
+            },
+            "tokens": 13,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "제품 품질에 매우 실망했습니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.481,
+              "negative": 0.165,
+              "neutral": 0.354
+            },
+            "confidence": 0.481,
+            "answer_confidence": 0.481,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4603,
+              "negative": 0.1449,
+              "neutral": 0.3948
+            },
+            "confidence": 0.4603,
+            "answer_confidence": 0.4603,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "제품 품질에 매우 실망했습니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.31524239998543635,
+      "comparison_seconds": 3.1685389999765903
+    },
+    {
+      "id": "N04",
+      "category": "negative",
+      "text": "세탁을 맡겼는데 옷에 새 얼룩이 생겼어요. 설명도 없이 돌려줘서 정말 화가 납니다.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "negative",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9992928504943848,
+            "probabilities": {
+              "negative": 0.9992928504943848,
+              "neutral": 0.000616752658970654,
+              "positive": 9.043937461683527e-05
+            },
+            "tokens": 37,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9988862872123718,
+            "probabilities": {
+              "negative": 0.9988862872123718,
+              "neutral": 0.0009130419930443168,
+              "positive": 0.00020060321548953652
+            },
+            "tokens": 18,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "세탁을 맡겼는데 옷에 새 얼룩이 생겼어요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.8873965740203857,
+            "probabilities": {
+              "negative": 0.8873965740203857,
+              "neutral": 0.10253094881772995,
+              "positive": 0.010072368197143078
+            },
+            "tokens": 21,
+            "truncated": false
+          },
+          {
+            "text": "설명도 없이 돌려줘서 정말 화가 납니다.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9988862872123718,
+            "probabilities": {
+              "negative": 0.9988862872123718,
+              "neutral": 0.0009130419930443168,
+              "positive": 0.00020060321548953652
+            },
+            "tokens": 18,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "설명도 없이 돌려줘서 정말 화가 납니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3559,
+              "negative": 0.2632,
+              "neutral": 0.381
+            },
+            "confidence": 0.381,
+            "answer_confidence": 0.381,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3855,
+              "negative": 0.2561,
+              "neutral": 0.3584
+            },
+            "confidence": 0.3855,
+            "answer_confidence": 0.3855,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "설명도 없이 돌려줘서 정말 화가 납니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.17259949998697266,
+      "comparison_seconds": 1.8977339999983087
+    },
+    {
+      "id": "N05",
+      "category": "negative",
+      "text": "유료 강좌인데 영상 소리가 작고 자막에 오류가 많아요. 결제한 것을 후회하고 있습니다.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "negative",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9982103109359741,
+            "probabilities": {
+              "negative": 0.9982103109359741,
+              "neutral": 0.0016138481441885233,
+              "positive": 0.0001758285507094115
+            },
+            "tokens": 33,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9159910082817078,
+            "probabilities": {
+              "negative": 0.9159910082817078,
+              "neutral": 0.06784623116254807,
+              "positive": 0.016162781044840813
+            },
+            "tokens": 11,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "유료 강좌인데 영상 소리가 작고 자막에 오류가 많아요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9241279363632202,
+            "probabilities": {
+              "negative": 0.9241279363632202,
+              "neutral": 0.07181894034147263,
+              "positive": 0.004053078591823578
+            },
+            "tokens": 24,
+            "truncated": false
+          },
+          {
+            "text": "결제한 것을 후회하고 있습니다.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9159910082817078,
+            "probabilities": {
+              "negative": 0.9159910082817078,
+              "neutral": 0.06784623116254807,
+              "positive": 0.016162781044840813
+            },
+            "tokens": 11,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "결제한 것을 후회하고 있습니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4301,
+              "negative": 0.1937,
+              "neutral": 0.3762
+            },
+            "confidence": 0.4301,
+            "answer_confidence": 0.4301,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.5978,
+              "negative": 0.1375,
+              "neutral": 0.2646
+            },
+            "confidence": 0.5978,
+            "answer_confidence": 0.5978,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "결제한 것을 후회하고 있습니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.21480750001501292,
+      "comparison_seconds": 2.527273099985905
+    },
+    {
+      "id": "N06",
+      "category": "negative",
+      "text": "렌터카 내부가 지저분하고 직원의 안내도 무성의했어요. 이용하는 내내 불편하고 짜증 났습니다.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "negative",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.999505877494812,
+            "probabilities": {
+              "negative": 0.999505877494812,
+              "neutral": 0.00037678706576116383,
+              "positive": 0.00011741416528820992
+            },
+            "tokens": 40,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9933295249938965,
+            "probabilities": {
+              "negative": 0.9933295249938965,
+              "neutral": 0.0048164865002036095,
+              "positive": 0.0018539970042183995
+            },
+            "tokens": 16,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "렌터카 내부가 지저분하고 직원의 안내도 무성의했어요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9980362057685852,
+            "probabilities": {
+              "negative": 0.9980362057685852,
+              "neutral": 0.0014113261131569743,
+              "positive": 0.0005525191081687808
+            },
+            "tokens": 26,
+            "truncated": false
+          },
+          {
+            "text": "이용하는 내내 불편하고 짜증 났습니다.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9933295249938965,
+            "probabilities": {
+              "negative": 0.9933295249938965,
+              "neutral": 0.0048164865002036095,
+              "positive": 0.0018539970042183995
+            },
+            "tokens": 16,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "이용하는 내내 불편하고 짜증 났습니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4838,
+              "negative": 0.2521,
+              "neutral": 0.2641
+            },
+            "confidence": 0.4838,
+            "answer_confidence": 0.4838,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.5725,
+              "negative": 0.1471,
+              "neutral": 0.2804
+            },
+            "confidence": 0.5725,
+            "answer_confidence": 0.5725,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "이용하는 내내 불편하고 짜증 났습니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.9969551999820396,
+      "comparison_seconds": 4.011344900005497
+    },
+    {
+      "id": "U01",
+      "category": "neutral",
+      "text": "전시관은 지상 삼 층과 지하 한 층으로 이루어져 있습니다. 매표소는 정문 오른쪽에 있습니다.",
+      "overall_reference": "neutral",
+      "final_standalone_reference": "neutral",
+      "final_contextual_reference": "neutral",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9999924898147583,
+            "probabilities": {
+              "negative": 1.6058737628554809e-06,
+              "neutral": 0.9999924898147583,
+              "positive": 5.97880261921091e-06
+            },
+            "tokens": 36,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9996663331985474,
+            "probabilities": {
+              "negative": 0.00014772292342968285,
+              "neutral": 0.9996663331985474,
+              "positive": 0.00018594258290249854
+            },
+            "tokens": 14,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "전시관은 지상 삼 층과 지하 한 층으로 이루어져 있습니다.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9999661445617676,
+            "probabilities": {
+              "negative": 6.5020112742786296e-06,
+              "neutral": 0.9999661445617676,
+              "positive": 2.7278509151074104e-05
+            },
+            "tokens": 24,
+            "truncated": false
+          },
+          {
+            "text": "매표소는 정문 오른쪽에 있습니다.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9996663331985474,
+            "probabilities": {
+              "negative": 0.00014772292342968285,
+              "neutral": 0.9996663331985474,
+              "positive": 0.00018594258290249854
+            },
+            "tokens": 14,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "매표소는 정문 오른쪽에 있습니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3446,
+              "negative": 0.2617,
+              "neutral": 0.3936
+            },
+            "confidence": 0.3936,
+            "answer_confidence": 0.3936,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3703,
+              "negative": 0.1783,
+              "neutral": 0.4514
+            },
+            "confidence": 0.4514,
+            "answer_confidence": 0.4514,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "매표소는 정문 오른쪽에 있습니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 2,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.1515594000229612,
+      "comparison_seconds": 2.5675215999945067
+    },
+    {
+      "id": "U02",
+      "category": "neutral",
+      "text": "도서 대출 기간은 십사 일입니다. 반납 예정일은 대출 영수증에 표시됩니다.",
+      "overall_reference": "neutral",
+      "final_standalone_reference": "neutral",
+      "final_contextual_reference": "neutral",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9995496869087219,
+            "probabilities": {
+              "negative": 0.00021501626179087907,
+              "neutral": 0.9995496869087219,
+              "positive": 0.00023529269674327224
+            },
+            "tokens": 31,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9997393488883972,
+            "probabilities": {
+              "negative": 9.851637878455222e-05,
+              "neutral": 0.9997393488883972,
+              "positive": 0.00016209474415518343
+            },
+            "tokens": 18,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "도서 대출 기간은 십사 일입니다.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9730167388916016,
+            "probabilities": {
+              "negative": 0.015898574143648148,
+              "neutral": 0.9730167388916016,
+              "positive": 0.01108474936336279
+            },
+            "tokens": 15,
+            "truncated": false
+          },
+          {
+            "text": "반납 예정일은 대출 영수증에 표시됩니다.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9997393488883972,
+            "probabilities": {
+              "negative": 9.851637878455222e-05,
+              "neutral": 0.9997393488883972,
+              "positive": 0.00016209474415518343
+            },
+            "tokens": 18,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "반납 예정일은 대출 영수증에 표시됩니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3502,
+              "negative": 0.2417,
+              "neutral": 0.4081
+            },
+            "confidence": 0.4081,
+            "answer_confidence": 0.4081,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.2921,
+              "negative": 0.2123,
+              "neutral": 0.4956
+            },
+            "confidence": 0.4956,
+            "answer_confidence": 0.4956,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "반납 예정일은 대출 영수증에 표시됩니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 2,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.43166069994913414,
+      "comparison_seconds": 3.8140035000396892
+    },
+    {
+      "id": "U03",
+      "category": "neutral",
+      "text": "이번 행사에는 사전 신청자만 입장할 수 있습니다. 접수는 금요일 정오에 마감됩니다.",
+      "overall_reference": "neutral",
+      "final_standalone_reference": "neutral",
+      "final_contextual_reference": "neutral",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.999488115310669,
+            "probabilities": {
+              "negative": 3.5605298762675375e-05,
+              "neutral": 0.999488115310669,
+              "positive": 0.00047624099534004927
+            },
+            "tokens": 32,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.998856782913208,
+            "probabilities": {
+              "negative": 0.00017753368592821062,
+              "neutral": 0.998856782913208,
+              "positive": 0.0009656629990786314
+            },
+            "tokens": 15,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "이번 행사에는 사전 신청자만 입장할 수 있습니다.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9977935552597046,
+            "probabilities": {
+              "negative": 0.0003560635377652943,
+              "neutral": 0.9977935552597046,
+              "positive": 0.001850421424023807
+            },
+            "tokens": 19,
+            "truncated": false
+          },
+          {
+            "text": "접수는 금요일 정오에 마감됩니다.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.998856782913208,
+            "probabilities": {
+              "negative": 0.00017753368592821062,
+              "neutral": 0.998856782913208,
+              "positive": 0.0009656629990786314
+            },
+            "tokens": 15,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "접수는 금요일 정오에 마감됩니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3264,
+              "negative": 0.1691,
+              "neutral": 0.5045
+            },
+            "confidence": 0.5045,
+            "answer_confidence": 0.5045,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3287,
+              "negative": 0.2497,
+              "neutral": 0.4216
+            },
+            "confidence": 0.4216,
+            "answer_confidence": 0.4216,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "접수는 금요일 정오에 마감됩니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 2,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.13744449999649078,
+      "comparison_seconds": 1.9005497999605723
+    },
+    {
+      "id": "U04",
+      "category": "neutral",
+      "text": "이 모니터에는 영상 입력 단자가 두 개 있습니다. 전원 버튼은 화면 아래쪽에 있습니다.",
+      "overall_reference": "neutral",
+      "final_standalone_reference": "neutral",
+      "final_contextual_reference": "neutral",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9998852014541626,
+            "probabilities": {
+              "negative": 6.499597657239065e-05,
+              "neutral": 0.9998852014541626,
+              "positive": 4.982725658919662e-05
+            },
+            "tokens": 27,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9994831085205078,
+            "probabilities": {
+              "negative": 0.00020348696853034198,
+              "neutral": 0.9994831085205078,
+              "positive": 0.00031337662949226797
+            },
+            "tokens": 13,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "이 모니터에는 영상 입력 단자가 두 개 있습니다.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9955975413322449,
+            "probabilities": {
+              "negative": 0.003682281356304884,
+              "neutral": 0.9955975413322449,
+              "positive": 0.0007201588596217334
+            },
+            "tokens": 16,
+            "truncated": false
+          },
+          {
+            "text": "전원 버튼은 화면 아래쪽에 있습니다.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9994831085205078,
+            "probabilities": {
+              "negative": 0.00020348696853034198,
+              "neutral": 0.9994831085205078,
+              "positive": 0.00031337662949226797
+            },
+            "tokens": 13,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "전원 버튼은 화면 아래쪽에 있습니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3169,
+              "negative": 0.3089,
+              "neutral": 0.3742
+            },
+            "confidence": 0.3742,
+            "answer_confidence": 0.3742,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4015,
+              "negative": 0.1852,
+              "neutral": 0.4132
+            },
+            "confidence": 0.4132,
+            "answer_confidence": 0.4132,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "전원 버튼은 화면 아래쪽에 있습니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 2,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.16691179998451844,
+      "comparison_seconds": 4.411772200022824
+    },
+    {
+      "id": "U05",
+      "category": "neutral",
+      "text": "수업은 매주 화요일과 목요일에 진행됩니다. 교재는 첫 수업에서 배부합니다.",
+      "overall_reference": "neutral",
+      "final_standalone_reference": "neutral",
+      "final_contextual_reference": "neutral",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9995423555374146,
+            "probabilities": {
+              "negative": 1.2099254490749445e-05,
+              "neutral": 0.9995423555374146,
+              "positive": 0.00044552292092703283
+            },
+            "tokens": 29,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.996552586555481,
+            "probabilities": {
+              "negative": 0.0003810402995441109,
+              "neutral": 0.996552586555481,
+              "positive": 0.003066452220082283
+            },
+            "tokens": 13,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "수업은 매주 화요일과 목요일에 진행됩니다.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9992557168006897,
+            "probabilities": {
+              "negative": 2.9537206501117907e-05,
+              "neutral": 0.9992557168006897,
+              "positive": 0.0007146926946006715
+            },
+            "tokens": 18,
+            "truncated": false
+          },
+          {
+            "text": "교재는 첫 수업에서 배부합니다.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.996552586555481,
+            "probabilities": {
+              "negative": 0.0003810402995441109,
+              "neutral": 0.996552586555481,
+              "positive": 0.003066452220082283
+            },
+            "tokens": 13,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "교재는 첫 수업에서 배부합니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.2904,
+              "negative": 0.1712,
+              "neutral": 0.5384
+            },
+            "confidence": 0.5384,
+            "answer_confidence": 0.5384,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4175,
+              "negative": 0.1971,
+              "neutral": 0.3854
+            },
+            "confidence": 0.4175,
+            "answer_confidence": 0.4175,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "교재는 첫 수업에서 배부합니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 2,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.199953600007575,
+      "comparison_seconds": 1.9928973999922164
+    },
+    {
+      "id": "U06",
+      "category": "neutral",
+      "text": "대여한 자전거의 번호는 영수증에 적혀 있습니다. 반납 장소는 출발 지점과 같습니다.",
+      "overall_reference": "neutral",
+      "final_standalone_reference": "neutral",
+      "final_contextual_reference": "neutral",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9995693564414978,
+            "probabilities": {
+              "negative": 0.00026621774304658175,
+              "neutral": 0.9995693564414978,
+              "positive": 0.00016439722094219178
+            },
+            "tokens": 33,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9962196946144104,
+            "probabilities": {
+              "negative": 0.0013316691620275378,
+              "neutral": 0.9962196946144104,
+              "positive": 0.0024487189948558807
+            },
+            "tokens": 15,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "대여한 자전거의 번호는 영수증에 적혀 있습니다.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9988376498222351,
+            "probabilities": {
+              "negative": 0.0006714013870805502,
+              "neutral": 0.9988376498222351,
+              "positive": 0.000490975973661989
+            },
+            "tokens": 20,
+            "truncated": false
+          },
+          {
+            "text": "반납 장소는 출발 지점과 같습니다.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9962196946144104,
+            "probabilities": {
+              "negative": 0.0013316691620275378,
+              "neutral": 0.9962196946144104,
+              "positive": 0.0024487189948558807
+            },
+            "tokens": 15,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "반납 장소는 출발 지점과 같습니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.368,
+              "negative": 0.2628,
+              "neutral": 0.3692
+            },
+            "confidence": 0.3692,
+            "answer_confidence": 0.3692,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4236,
+              "negative": 0.2002,
+              "neutral": 0.3763
+            },
+            "confidence": 0.4236,
+            "answer_confidence": 0.4236,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "반납 장소는 출발 지점과 같습니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 2,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.1973485000198707,
+      "comparison_seconds": 4.906024799973238
+    },
+    {
+      "id": "M01",
+      "category": "mixed",
+      "text": "가방의 수납공간은 넉넉하고 디자인도 마음에 들어요. 어깨끈이 얇아서 오래 메면 아파요.",
+      "overall_reference": "neutral",
+      "final_standalone_reference": "negative",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": true,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.8145020604133606,
+            "probabilities": {
+              "negative": 0.01804635301232338,
+              "neutral": 0.16745157539844513,
+              "positive": 0.8145020604133606
+            },
+            "tokens": 38,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.7670348286628723,
+            "probabilities": {
+              "negative": 0.7670348286628723,
+              "neutral": 0.21836960315704346,
+              "positive": 0.014595545828342438
+            },
+            "tokens": 18,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "가방의 수납공간은 넉넉하고 디자인도 마음에 들어요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9967380166053772,
+            "probabilities": {
+              "negative": 0.0004444937512744218,
+              "neutral": 0.0028174875769764185,
+              "positive": 0.9967380166053772
+            },
+            "tokens": 22,
+            "truncated": false
+          },
+          {
+            "text": "어깨끈이 얇아서 오래 메면 아파요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.7670348286628723,
+            "probabilities": {
+              "negative": 0.7670348286628723,
+              "neutral": 0.21836960315704346,
+              "positive": 0.014595545828342438
+            },
+            "tokens": 18,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "어깨끈이 얇아서 오래 메면 아파요.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3551,
+              "negative": 0.2569,
+              "neutral": 0.388
+            },
+            "confidence": 0.388,
+            "answer_confidence": 0.388,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3332,
+              "negative": 0.2187,
+              "neutral": 0.4482
+            },
+            "confidence": 0.4482,
+            "answer_confidence": 0.4482,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "어깨끈이 얇아서 오래 메면 아파요."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_observed",
+        "counts": {
+          "positive": 1,
+          "negative": 1,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.1774574999581091,
+      "comparison_seconds": 2.266483400017023
+    },
+    {
+      "id": "M02",
+      "category": "mixed",
+      "text": "캠핑장 화장실이 멀어서 이용하기 불편했어요. 주변 풍경이 아름답고 산책로가 잘 되어 있어 좋았어요.",
+      "overall_reference": "neutral",
+      "final_standalone_reference": "positive",
+      "final_contextual_reference": "positive",
+      "literal_sentence_coexistence": true,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.8387439846992493,
+            "probabilities": {
+              "negative": 0.015637822449207306,
+              "neutral": 0.8387439846992493,
+              "positive": 0.14561820030212402
+            },
+            "tokens": 44,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9997177720069885,
+            "probabilities": {
+              "negative": 0.00010888955875998363,
+              "neutral": 0.00017329934053122997,
+              "positive": 0.9997177720069885
+            },
+            "tokens": 24,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "캠핑장 화장실이 멀어서 이용하기 불편했어요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9511659145355225,
+            "probabilities": {
+              "negative": 0.9511659145355225,
+              "neutral": 0.04474080726504326,
+              "positive": 0.00409335270524025
+            },
+            "tokens": 22,
+            "truncated": false
+          },
+          {
+            "text": "주변 풍경이 아름답고 산책로가 잘 되어 있어 좋았어요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9997177720069885,
+            "probabilities": {
+              "negative": 0.00010888955875998363,
+              "neutral": 0.00017329934053122997,
+              "positive": 0.9997177720069885
+            },
+            "tokens": 24,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "주변 풍경이 아름답고 산책로가 잘 되어 있어 좋았어요.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3373,
+              "negative": 0.3024,
+              "neutral": 0.3604
+            },
+            "confidence": 0.3604,
+            "answer_confidence": 0.3604,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3988,
+              "negative": 0.2655,
+              "neutral": 0.3358
+            },
+            "confidence": 0.3988,
+            "answer_confidence": 0.3988,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "주변 풍경이 아름답고 산책로가 잘 되어 있어 좋았어요."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_observed",
+        "counts": {
+          "positive": 1,
+          "negative": 1,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.20049869996728376,
+      "comparison_seconds": 4.269074000010733
+    },
+    {
+      "id": "M03",
+      "category": "mixed",
+      "text": "키보드의 타건감이 좋고 손목도 편안해요. 키를 누를 때 나는 소리가 너무 커서 신경 쓰여요.",
+      "overall_reference": "neutral",
+      "final_standalone_reference": "negative",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": true,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.5550902485847473,
+            "probabilities": {
+              "negative": 0.0351254977285862,
+              "neutral": 0.4097842276096344,
+              "positive": 0.5550902485847473
+            },
+            "tokens": 38,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.8875391483306885,
+            "probabilities": {
+              "negative": 0.8875391483306885,
+              "neutral": 0.09705175459384918,
+              "positive": 0.01540917158126831
+            },
+            "tokens": 20,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "키보드의 타건감이 좋고 손목도 편안해요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9969764947891235,
+            "probabilities": {
+              "negative": 0.0006617665058001876,
+              "neutral": 0.0023616934195160866,
+              "positive": 0.9969764947891235
+            },
+            "tokens": 20,
+            "truncated": false
+          },
+          {
+            "text": "키를 누를 때 나는 소리가 너무 커서 신경 쓰여요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.8875391483306885,
+            "probabilities": {
+              "negative": 0.8875391483306885,
+              "neutral": 0.09705175459384918,
+              "positive": 0.01540917158126831
+            },
+            "tokens": 20,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "키를 누를 때 나는 소리가 너무 커서 신경 쓰여요.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3912,
+              "negative": 0.2839,
+              "neutral": 0.3249
+            },
+            "confidence": 0.3912,
+            "answer_confidence": 0.3912,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4048,
+              "negative": 0.2004,
+              "neutral": 0.3948
+            },
+            "confidence": 0.4048,
+            "answer_confidence": 0.4048,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "키를 누를 때 나는 소리가 너무 커서 신경 쓰여요."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_observed",
+        "counts": {
+          "positive": 1,
+          "negative": 1,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.12355449999449775,
+      "comparison_seconds": 1.6287393000093289
+    },
+    {
+      "id": "M04",
+      "category": "mixed",
+      "text": "박물관의 안내 표지가 부족해서 길을 찾기 어려웠어요. 전시물은 흥미롭고 해설도 재미있었어요.",
+      "overall_reference": "neutral",
+      "final_standalone_reference": "positive",
+      "final_contextual_reference": "positive",
+      "literal_sentence_coexistence": true,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.5947619080543518,
+            "probabilities": {
+              "negative": 0.03562202677130699,
+              "neutral": 0.5947619080543518,
+              "positive": 0.3696160912513733
+            },
+            "tokens": 43,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9986863732337952,
+            "probabilities": {
+              "negative": 0.00024879773263819516,
+              "neutral": 0.0010648559546098113,
+              "positive": 0.9986863732337952
+            },
+            "tokens": 21,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "박물관의 안내 표지가 부족해서 길을 찾기 어려웠어요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9674683809280396,
+            "probabilities": {
+              "negative": 0.9674683809280396,
+              "neutral": 0.029795121401548386,
+              "positive": 0.0027364911511540413
+            },
+            "tokens": 24,
+            "truncated": false
+          },
+          {
+            "text": "전시물은 흥미롭고 해설도 재미있었어요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9986863732337952,
+            "probabilities": {
+              "negative": 0.00024879773263819516,
+              "neutral": 0.0010648559546098113,
+              "positive": 0.9986863732337952
+            },
+            "tokens": 21,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "전시물은 흥미롭고 해설도 재미있었어요.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.334,
+              "negative": 0.2475,
+              "neutral": 0.4185
+            },
+            "confidence": 0.4185,
+            "answer_confidence": 0.4185,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4105,
+              "negative": 0.163,
+              "neutral": 0.4265
+            },
+            "confidence": 0.4265,
+            "answer_confidence": 0.4265,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "전시물은 흥미롭고 해설도 재미있었어요."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_observed",
+        "counts": {
+          "positive": 1,
+          "negative": 1,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.13089000002946705,
+      "comparison_seconds": 2.016224799968768
+    },
+    {
+      "id": "M05",
+      "category": "mixed",
+      "text": "자전거가 가볍고 변속도 부드러워서 좋아요. 안장이 딱딱해서 장거리 주행은 불편해요.",
+      "overall_reference": "neutral",
+      "final_standalone_reference": "negative",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": true,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.8212574124336243,
+            "probabilities": {
+              "negative": 0.06229947507381439,
+              "neutral": 0.8212574124336243,
+              "positive": 0.1164432018995285
+            },
+            "tokens": 38,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9782036542892456,
+            "probabilities": {
+              "negative": 0.9782036542892456,
+              "neutral": 0.018779467791318893,
+              "positive": 0.003016881877556443
+            },
+            "tokens": 20,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "자전거가 가볍고 변속도 부드러워서 좋아요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9983879327774048,
+            "probabilities": {
+              "negative": 0.0004898085608147085,
+              "neutral": 0.001122229266911745,
+              "positive": 0.9983879327774048
+            },
+            "tokens": 20,
+            "truncated": false
+          },
+          {
+            "text": "안장이 딱딱해서 장거리 주행은 불편해요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9782036542892456,
+            "probabilities": {
+              "negative": 0.9782036542892456,
+              "neutral": 0.018779467791318893,
+              "positive": 0.003016881877556443
+            },
+            "tokens": 20,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "안장이 딱딱해서 장거리 주행은 불편해요.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4146,
+              "negative": 0.2563,
+              "neutral": 0.329
+            },
+            "confidence": 0.4146,
+            "answer_confidence": 0.4146,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3763,
+              "negative": 0.2152,
+              "neutral": 0.4085
+            },
+            "confidence": 0.4085,
+            "answer_confidence": 0.4085,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "안장이 딱딱해서 장거리 주행은 불편해요."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_observed",
+        "counts": {
+          "positive": 1,
+          "negative": 1,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.2848550000344403,
+      "comparison_seconds": 3.2007610000437126
+    },
+    {
+      "id": "M06",
+      "category": "mixed",
+      "text": "강의 속도가 빨라서 필기를 따라가기 어려웠어요. 실습 예제는 실제 업무에 도움이 돼서 좋았어요.",
+      "overall_reference": "neutral",
+      "final_standalone_reference": "positive",
+      "final_contextual_reference": "positive",
+      "literal_sentence_coexistence": true,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.8181809782981873,
+            "probabilities": {
+              "negative": 0.009457038715481758,
+              "neutral": 0.17236199975013733,
+              "positive": 0.8181809782981873
+            },
+            "tokens": 43,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9969095587730408,
+            "probabilities": {
+              "negative": 0.000849760661367327,
+              "neutral": 0.0022406401112675667,
+              "positive": 0.9969095587730408
+            },
+            "tokens": 23,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "강의 속도가 빨라서 필기를 따라가기 어려웠어요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.3669782876968384,
+            "probabilities": {
+              "negative": 0.3071454167366028,
+              "neutral": 0.32587629556655884,
+              "positive": 0.3669782876968384
+            },
+            "tokens": 22,
+            "truncated": false
+          },
+          {
+            "text": "실습 예제는 실제 업무에 도움이 돼서 좋았어요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9969095587730408,
+            "probabilities": {
+              "negative": 0.000849760661367327,
+              "neutral": 0.0022406401112675667,
+              "positive": 0.9969095587730408
+            },
+            "tokens": 23,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "실습 예제는 실제 업무에 도움이 돼서 좋았어요.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4359,
+              "negative": 0.2438,
+              "neutral": 0.3204
+            },
+            "confidence": 0.4359,
+            "answer_confidence": 0.4359,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3821,
+              "negative": 0.2011,
+              "neutral": 0.4169
+            },
+            "confidence": 0.4169,
+            "answer_confidence": 0.4169,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "실습 예제는 실제 업무에 도움이 돼서 좋았어요."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "insufficient_evidence",
+        "counts": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 0,
+          "uncertain": 1
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.49564949999330565,
+      "comparison_seconds": 1.963006799982395
+    },
+    {
+      "id": "S01",
+      "category": "sarcasm",
+      "text": "교환받은 의자도 다리가 부러져 왔어요. 품질 관리가 참 철저하네요.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "positive",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": true,
+      "note": "Literal praise in the ending reverses meaning in context; literal coexistence is not genuine mixed satisfaction.",
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.8098329901695251,
+            "probabilities": {
+              "negative": 0.8098329901695251,
+              "neutral": 0.07754253596067429,
+              "positive": 0.11262451112270355
+            },
+            "tokens": 31,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9701732397079468,
+            "probabilities": {
+              "negative": 0.015023248270154,
+              "neutral": 0.014803514815866947,
+              "positive": 0.9701732397079468
+            },
+            "tokens": 14,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "교환받은 의자도 다리가 부러져 왔어요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9439104795455933,
+            "probabilities": {
+              "negative": 0.9439104795455933,
+              "neutral": 0.05054720863699913,
+              "positive": 0.005542338825762272
+            },
+            "tokens": 19,
+            "truncated": false
+          },
+          {
+            "text": "품질 관리가 참 철저하네요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9701732397079468,
+            "probabilities": {
+              "negative": 0.015023248270154,
+              "neutral": 0.014803514815866947,
+              "positive": 0.9701732397079468
+            },
+            "tokens": 14,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "품질 관리가 참 철저하네요.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3248,
+              "negative": 0.322,
+              "neutral": 0.3532
+            },
+            "confidence": 0.3532,
+            "answer_confidence": 0.3532,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4459,
+              "negative": 0.2288,
+              "neutral": 0.3253
+            },
+            "confidence": 0.4459,
+            "answer_confidence": 0.4459,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "품질 관리가 참 철저하네요."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_observed",
+        "counts": {
+          "positive": 1,
+          "negative": 1,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.11001639999449253,
+      "comparison_seconds": 3.824051800009329
+    },
+    {
+      "id": "S02",
+      "category": "sarcasm",
+      "text": "백업 기능을 켰더니 저장한 사진이 전부 사라졌어요. 정말 믿음직한 기능이군요.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "positive",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": true,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.7440764904022217,
+            "probabilities": {
+              "negative": 0.200791597366333,
+              "neutral": 0.05513191223144531,
+              "positive": 0.7440764904022217
+            },
+            "tokens": 34,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9959548711776733,
+            "probabilities": {
+              "negative": 0.0018188018584623933,
+              "neutral": 0.0022263142745941877,
+              "positive": 0.9959548711776733
+            },
+            "tokens": 14,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "백업 기능을 켰더니 저장한 사진이 전부 사라졌어요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9414995908737183,
+            "probabilities": {
+              "negative": 0.9414995908737183,
+              "neutral": 0.05279523879289627,
+              "positive": 0.005705148912966251
+            },
+            "tokens": 22,
+            "truncated": false
+          },
+          {
+            "text": "정말 믿음직한 기능이군요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9959548711776733,
+            "probabilities": {
+              "negative": 0.0018188018584623933,
+              "neutral": 0.0022263142745941877,
+              "positive": 0.9959548711776733
+            },
+            "tokens": 14,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "정말 믿음직한 기능이군요.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4621,
+              "negative": 0.1936,
+              "neutral": 0.3443
+            },
+            "confidence": 0.4621,
+            "answer_confidence": 0.4621,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.6648,
+              "negative": 0.1173,
+              "neutral": 0.2178
+            },
+            "confidence": 0.6648,
+            "answer_confidence": 0.6648,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "정말 믿음직한 기능이군요."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_observed",
+        "counts": {
+          "positive": 1,
+          "negative": 1,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.2474692999967374,
+      "comparison_seconds": 2.9563960999948904
+    },
+    {
+      "id": "S03",
+      "category": "sarcasm",
+      "text": "계약한 방 대신 창고 같은 방을 받았어요. 손님을 귀하게 대하는 곳이네요.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "positive",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": true,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.7561822533607483,
+            "probabilities": {
+              "negative": 0.0802498459815979,
+              "neutral": 0.16356785595417023,
+              "positive": 0.7561822533607483
+            },
+            "tokens": 30,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.7019222378730774,
+            "probabilities": {
+              "negative": 0.08900103718042374,
+              "neutral": 0.2090766876935959,
+              "positive": 0.7019222378730774
+            },
+            "tokens": 14,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "계약한 방 대신 창고 같은 방을 받았어요.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.7906517386436462,
+            "probabilities": {
+              "negative": 0.08778256922960281,
+              "neutral": 0.7906517386436462,
+              "positive": 0.12156569212675095
+            },
+            "tokens": 18,
+            "truncated": false
+          },
+          {
+            "text": "손님을 귀하게 대하는 곳이네요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.7019222378730774,
+            "probabilities": {
+              "negative": 0.08900103718042374,
+              "neutral": 0.2090766876935959,
+              "positive": 0.7019222378730774
+            },
+            "tokens": 14,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "손님을 귀하게 대하는 곳이네요.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4596,
+              "negative": 0.2111,
+              "neutral": 0.3293
+            },
+            "confidence": 0.4596,
+            "answer_confidence": 0.4596,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.5616,
+              "negative": 0.1758,
+              "neutral": 0.2626
+            },
+            "confidence": 0.5616,
+            "answer_confidence": 0.5616,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "손님을 귀하게 대하는 곳이네요."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 1,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.11353480000980198,
+      "comparison_seconds": 1.9391783000319265
+    },
+    {
+      "id": "S04",
+      "category": "sarcasm",
+      "text": "공연 시작 직전에 아무 설명 없이 취소 문자를 보냈어요. 관객을 배려하는 마음이 참 대단하네요.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "positive",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": true,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.884181559085846,
+            "probabilities": {
+              "negative": 0.07617455720901489,
+              "neutral": 0.039643898606300354,
+              "positive": 0.884181559085846
+            },
+            "tokens": 39,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.99713134765625,
+            "probabilities": {
+              "negative": 0.0011293693678453565,
+              "neutral": 0.0017392386216670275,
+              "positive": 0.99713134765625
+            },
+            "tokens": 18,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "공연 시작 직전에 아무 설명 없이 취소 문자를 보냈어요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.7494266033172607,
+            "probabilities": {
+              "negative": 0.7494266033172607,
+              "neutral": 0.24297936260700226,
+              "positive": 0.007593960966914892
+            },
+            "tokens": 23,
+            "truncated": false
+          },
+          {
+            "text": "관객을 배려하는 마음이 참 대단하네요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.99713134765625,
+            "probabilities": {
+              "negative": 0.0011293693678453565,
+              "neutral": 0.0017392386216670275,
+              "positive": 0.99713134765625
+            },
+            "tokens": 18,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "관객을 배려하는 마음이 참 대단하네요.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3951,
+              "negative": 0.2506,
+              "neutral": 0.3543
+            },
+            "confidence": 0.3951,
+            "answer_confidence": 0.3951,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.5515,
+              "negative": 0.1944,
+              "neutral": 0.2541
+            },
+            "confidence": 0.5515,
+            "answer_confidence": 0.5515,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "관객을 배려하는 마음이 참 대단하네요."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_observed",
+        "counts": {
+          "positive": 1,
+          "negative": 1,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.1615481999469921,
+      "comparison_seconds": 3.0552320000133477
+    },
+    {
+      "id": "S05",
+      "category": "sarcasm",
+      "text": "방수 가방이라더니 비를 맞자 안에 든 책이 다 젖었어요. 이름에 걸맞은 훌륭한 성능이네요.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "positive",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": true,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.6813031435012817,
+            "probabilities": {
+              "negative": 0.25147712230682373,
+              "neutral": 0.06721977889537811,
+              "positive": 0.6813031435012817
+            },
+            "tokens": 42,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9980379939079285,
+            "probabilities": {
+              "negative": 0.0011484673013910651,
+              "neutral": 0.000813569757156074,
+              "positive": 0.9980379939079285
+            },
+            "tokens": 17,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "방수 가방이라더니 비를 맞자 안에 든 책이 다 젖었어요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.6316603422164917,
+            "probabilities": {
+              "negative": 0.6316603422164917,
+              "neutral": 0.34902051091194153,
+              "positive": 0.019319120794534683
+            },
+            "tokens": 27,
+            "truncated": false
+          },
+          {
+            "text": "이름에 걸맞은 훌륭한 성능이네요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9980379939079285,
+            "probabilities": {
+              "negative": 0.0011484673013910651,
+              "neutral": 0.000813569757156074,
+              "positive": 0.9980379939079285
+            },
+            "tokens": 17,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "이름에 걸맞은 훌륭한 성능이네요.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3842,
+              "negative": 0.2068,
+              "neutral": 0.409
+            },
+            "confidence": 0.409,
+            "answer_confidence": 0.409,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.5654,
+              "negative": 0.1486,
+              "neutral": 0.286
+            },
+            "confidence": 0.5654,
+            "answer_confidence": 0.5654,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "이름에 걸맞은 훌륭한 성능이네요."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "insufficient_evidence",
+        "counts": {
+          "positive": 1,
+          "negative": 0,
+          "neutral": 0,
+          "uncertain": 1
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.5589516999898478,
+      "comparison_seconds": 3.5620074999751523
+    },
+    {
+      "id": "S06",
+      "category": "sarcasm",
+      "text": "조용한 객실이라고 해서 예약했는데 밤새 공사 소리가 들렸어요. 숙면하기에 정말 완벽한 환경이네요.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "positive",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": true,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9478154182434082,
+            "probabilities": {
+              "negative": 0.9478154182434082,
+              "neutral": 0.027871329337358475,
+              "positive": 0.02431326173245907
+            },
+            "tokens": 44,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9956385493278503,
+            "probabilities": {
+              "negative": 0.0023787468671798706,
+              "neutral": 0.0019827615469694138,
+              "positive": 0.9956385493278503
+            },
+            "tokens": 18,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "조용한 객실이라고 해서 예약했는데 밤새 공사 소리가 들렸어요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9531885981559753,
+            "probabilities": {
+              "negative": 0.9531885981559753,
+              "neutral": 0.044557273387908936,
+              "positive": 0.00225400784984231
+            },
+            "tokens": 28,
+            "truncated": false
+          },
+          {
+            "text": "숙면하기에 정말 완벽한 환경이네요.",
+            "type": "choice",
+            "choice": "positive",
+            "confidence": 0.9956385493278503,
+            "probabilities": {
+              "negative": 0.0023787468671798706,
+              "neutral": 0.0019827615469694138,
+              "positive": 0.9956385493278503
+            },
+            "tokens": 18,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "숙면하기에 정말 완벽한 환경이네요.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4356,
+              "negative": 0.2223,
+              "neutral": 0.342
+            },
+            "confidence": 0.4356,
+            "answer_confidence": 0.4356,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4492,
+              "negative": 0.2094,
+              "neutral": 0.3414
+            },
+            "confidence": 0.4492,
+            "answer_confidence": 0.4492,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "숙면하기에 정말 완벽한 환경이네요."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_observed",
+        "counts": {
+          "positive": 1,
+          "negative": 1,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.16329810000024736,
+      "comparison_seconds": 6.569601099996362
+    },
+    {
+      "id": "I01",
+      "category": "indirect_dissatisfaction",
+      "text": "설명을 듣기 위해 여러 번 문의했지만 끝내 안내를 받지 못했어요. 앞으로는 다른 업체에 맡기겠습니다.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "neutral",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9878025650978088,
+            "probabilities": {
+              "negative": 0.9878025650978088,
+              "neutral": 0.011988513171672821,
+              "positive": 0.00020886426500510424
+            },
+            "tokens": 39,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.7645912766456604,
+            "probabilities": {
+              "negative": 0.7645912766456604,
+              "neutral": 0.22515256702899933,
+              "positive": 0.010256126523017883
+            },
+            "tokens": 15,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "설명을 듣기 위해 여러 번 문의했지만 끝내 안내를 받지 못했어요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.986747145652771,
+            "probabilities": {
+              "negative": 0.986747145652771,
+              "neutral": 0.012907423079013824,
+              "positive": 0.00034538557520136237
+            },
+            "tokens": 26,
+            "truncated": false
+          },
+          {
+            "text": "앞으로는 다른 업체에 맡기겠습니다.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.7645912766456604,
+            "probabilities": {
+              "negative": 0.7645912766456604,
+              "neutral": 0.22515256702899933,
+              "positive": 0.010256126523017883
+            },
+            "tokens": 15,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "앞으로는 다른 업체에 맡기겠습니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3642,
+              "negative": 0.1583,
+              "neutral": 0.4774
+            },
+            "confidence": 0.4774,
+            "answer_confidence": 0.4774,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4861,
+              "negative": 0.1127,
+              "neutral": 0.4011
+            },
+            "confidence": 0.4861,
+            "answer_confidence": 0.4861,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "앞으로는 다른 업체에 맡기겠습니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 0,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.19486200000392273,
+      "comparison_seconds": 2.869393399974797
+    },
+    {
+      "id": "I02",
+      "category": "indirect_dissatisfaction",
+      "text": "세 번이나 수선을 맡겼는데도 같은 부분이 계속 뜯어져요. 다음 구매 목록에서는 이 브랜드를 빼 두려고요.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "neutral",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9976311922073364,
+            "probabilities": {
+              "negative": 0.9976311922073364,
+              "neutral": 0.002160485368221998,
+              "positive": 0.00020835611212532967
+            },
+            "tokens": 41,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.5388636589050293,
+            "probabilities": {
+              "negative": 0.4378589689731598,
+              "neutral": 0.5388636589050293,
+              "positive": 0.02327735722064972
+            },
+            "tokens": 18,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "세 번이나 수선을 맡겼는데도 같은 부분이 계속 뜯어져요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9885106086730957,
+            "probabilities": {
+              "negative": 0.9885106086730957,
+              "neutral": 0.010962291620671749,
+              "positive": 0.0005270804394967854
+            },
+            "tokens": 25,
+            "truncated": false
+          },
+          {
+            "text": "다음 구매 목록에서는 이 브랜드를 빼 두려고요.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.5388636589050293,
+            "probabilities": {
+              "negative": 0.4378589689731598,
+              "neutral": 0.5388636589050293,
+              "positive": 0.02327735722064972
+            },
+            "tokens": 18,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "다음 구매 목록에서는 이 브랜드를 빼 두려고요.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4037,
+              "negative": 0.2365,
+              "neutral": 0.3598
+            },
+            "confidence": 0.4037,
+            "answer_confidence": 0.4037,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.354,
+              "negative": 0.1703,
+              "neutral": 0.4757
+            },
+            "confidence": 0.4757,
+            "answer_confidence": 0.4757,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "다음 구매 목록에서는 이 브랜드를 빼 두려고요."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "insufficient_evidence",
+        "counts": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 0,
+          "uncertain": 1
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.4735701999743469,
+      "comparison_seconds": 4.959057400003076
+    },
+    {
+      "id": "I03",
+      "category": "indirect_dissatisfaction",
+      "text": "설명과 다른 재료를 사용했고 수정 요청에도 응답이 없었어요. 추가 주문은 하지 않는 것으로 정리했습니다.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "neutral",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.8575745224952698,
+            "probabilities": {
+              "negative": 0.8575745224952698,
+              "neutral": 0.1382117122411728,
+              "positive": 0.004213713109493256
+            },
+            "tokens": 35,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.8251843452453613,
+            "probabilities": {
+              "negative": 0.12178711593151093,
+              "neutral": 0.8251843452453613,
+              "positive": 0.05302855372428894
+            },
+            "tokens": 15,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "설명과 다른 재료를 사용했고 수정 요청에도 응답이 없었어요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9449050426483154,
+            "probabilities": {
+              "negative": 0.9449050426483154,
+              "neutral": 0.05210990458726883,
+              "positive": 0.0029851205181330442
+            },
+            "tokens": 22,
+            "truncated": false
+          },
+          {
+            "text": "추가 주문은 하지 않는 것으로 정리했습니다.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.8251843452453613,
+            "probabilities": {
+              "negative": 0.12178711593151093,
+              "neutral": 0.8251843452453613,
+              "positive": 0.05302855372428894
+            },
+            "tokens": 15,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "추가 주문은 하지 않는 것으로 정리했습니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3548,
+              "negative": 0.2309,
+              "neutral": 0.4143
+            },
+            "confidence": 0.4143,
+            "answer_confidence": 0.4143,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3327,
+              "negative": 0.2529,
+              "neutral": 0.4144
+            },
+            "confidence": 0.4144,
+            "answer_confidence": 0.4144,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "추가 주문은 하지 않는 것으로 정리했습니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 1,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.19328390003647655,
+      "comparison_seconds": 3.3168065999634564
+    },
+    {
+      "id": "I04",
+      "category": "indirect_dissatisfaction",
+      "text": "요금을 두 번 청구한 뒤 정정 처리가 한 달 넘게 지연됐어요. 갱신 시기가 오면 다른 서비스를 알아볼 생각입니다.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "neutral",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9628358483314514,
+            "probabilities": {
+              "negative": 0.9628358483314514,
+              "neutral": 0.036424629390239716,
+              "positive": 0.000739520532079041
+            },
+            "tokens": 43,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9600389003753662,
+            "probabilities": {
+              "negative": 0.03107592836022377,
+              "neutral": 0.9600389003753662,
+              "positive": 0.008885087445378304
+            },
+            "tokens": 19,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "요금을 두 번 청구한 뒤 정정 처리가 한 달 넘게 지연됐어요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9938001036643982,
+            "probabilities": {
+              "negative": 0.9938001036643982,
+              "neutral": 0.005951730068773031,
+              "positive": 0.00024823271087370813
+            },
+            "tokens": 26,
+            "truncated": false
+          },
+          {
+            "text": "갱신 시기가 오면 다른 서비스를 알아볼 생각입니다.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9600389003753662,
+            "probabilities": {
+              "negative": 0.03107592836022377,
+              "neutral": 0.9600389003753662,
+              "positive": 0.008885087445378304
+            },
+            "tokens": 19,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "갱신 시기가 오면 다른 서비스를 알아볼 생각입니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3925,
+              "negative": 0.2154,
+              "neutral": 0.3921
+            },
+            "confidence": 0.3925,
+            "answer_confidence": 0.3925,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4477,
+              "negative": 0.1911,
+              "neutral": 0.3611
+            },
+            "confidence": 0.4477,
+            "answer_confidence": 0.4477,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "갱신 시기가 오면 다른 서비스를 알아볼 생각입니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 1,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.20204599999124184,
+      "comparison_seconds": 3.449487500009127
+    },
+    {
+      "id": "I05",
+      "category": "indirect_dissatisfaction",
+      "text": "약속한 날짜를 여러 차례 넘겼고 진행 상황도 알려 주지 않았어요. 지인이 물어보면 다른 곳도 비교해 보라고 하겠습니다.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "neutral",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.96551114320755,
+            "probabilities": {
+              "negative": 0.96551114320755,
+              "neutral": 0.03346087783575058,
+              "positive": 0.0010278999106958508
+            },
+            "tokens": 47,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9849079847335815,
+            "probabilities": {
+              "negative": 0.0049428073689341545,
+              "neutral": 0.9849079847335815,
+              "positive": 0.010149206034839153
+            },
+            "tokens": 21,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "약속한 날짜를 여러 차례 넘겼고 진행 상황도 알려 주지 않았어요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.9949422478675842,
+            "probabilities": {
+              "negative": 0.9949422478675842,
+              "neutral": 0.004788846243172884,
+              "positive": 0.0002689373795874417
+            },
+            "tokens": 28,
+            "truncated": false
+          },
+          {
+            "text": "지인이 물어보면 다른 곳도 비교해 보라고 하겠습니다.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.9849079847335815,
+            "probabilities": {
+              "negative": 0.0049428073689341545,
+              "neutral": 0.9849079847335815,
+              "positive": 0.010149206034839153
+            },
+            "tokens": 21,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "지인이 물어보면 다른 곳도 비교해 보라고 하겠습니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.496,
+              "negative": 0.222,
+              "neutral": 0.2819
+            },
+            "confidence": 0.496,
+            "answer_confidence": 0.496,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.5913,
+              "negative": 0.1572,
+              "neutral": 0.2515
+            },
+            "confidence": 0.5913,
+            "answer_confidence": 0.5913,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "지인이 물어보면 다른 곳도 비교해 보라고 하겠습니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 1,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.1943733999505639,
+      "comparison_seconds": 1.8429440000327304
+    },
+    {
+      "id": "I06",
+      "category": "indirect_dissatisfaction",
+      "text": "수업이 자주 취소되고 보강 일정도 계속 바뀌었어요. 이번 달까지만 듣고 마무리하려고 합니다.",
+      "overall_reference": "negative",
+      "final_standalone_reference": "neutral",
+      "final_contextual_reference": "negative",
+      "literal_sentence_coexistence": false,
+      "primary": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.7218300104141235,
+            "probabilities": {
+              "negative": 0.2586759924888611,
+              "neutral": 0.7218300104141235,
+              "positive": 0.019494038075208664
+            },
+            "tokens": 39,
+            "truncated": false
+          },
+          "final": {
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.7961624264717102,
+            "probabilities": {
+              "negative": 0.06493208557367325,
+              "neutral": 0.7961624264717102,
+              "positive": 0.13890545070171356
+            },
+            "tokens": 17,
+            "truncated": false
+          }
+        },
+        "sentences": [
+          {
+            "text": "수업이 자주 취소되고 보강 일정도 계속 바뀌었어요.",
+            "type": "choice",
+            "choice": "negative",
+            "confidence": 0.7676174640655518,
+            "probabilities": {
+              "negative": 0.7676174640655518,
+              "neutral": 0.22584477066993713,
+              "positive": 0.006537809036672115
+            },
+            "tokens": 24,
+            "truncated": false
+          },
+          {
+            "text": "이번 달까지만 듣고 마무리하려고 합니다.",
+            "type": "choice",
+            "choice": "neutral",
+            "confidence": 0.7961624264717102,
+            "probabilities": {
+              "negative": 0.06493208557367325,
+              "neutral": 0.7961624264717102,
+              "positive": 0.13890545070171356
+            },
+            "tokens": 17,
+            "truncated": false
+          }
+        ],
+        "final_sentence": "이번 달까지만 듣고 마무리하려고 합니다.",
+        "sentence_count": 2,
+        "sentence_limit_applied": false,
+        "model": "Horizon-Labs/multilingual-sentiment-small",
+        "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+        "provider": "local_multilingual_sentiment"
+      },
+      "openjevx": {
+        "answers": {
+          "overall": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.3756,
+              "negative": 0.2345,
+              "neutral": 0.3899
+            },
+            "confidence": 0.3899,
+            "answer_confidence": 0.3899,
+            "choice": "neutral",
+            "action": {
+              "act_probability": 1.0
+            }
+          },
+          "final": {
+            "type": "choice",
+            "probabilities": {
+              "positive": 0.4643,
+              "negative": 0.1917,
+              "neutral": 0.3441
+            },
+            "confidence": 0.4643,
+            "answer_confidence": 0.4643,
+            "choice": "positive",
+            "action": {
+              "act_probability": 1.0
+            }
+          }
+        },
+        "final_sentence": "이번 달까지만 듣고 마무리하려고 합니다."
+      },
+      "composition": {
+        "method": "confident_sentence_labels",
+        "status": "coexistence_not_observed",
+        "counts": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 1,
+          "uncertain": 0
+        },
+        "scope": "analyzed_sentences_only",
+        "does_not_override_raw_prediction": true
+      },
+      "primary_seconds": 0.21664449997479096,
+      "comparison_seconds": 2.911374000017531
+    }
+  ]
+}

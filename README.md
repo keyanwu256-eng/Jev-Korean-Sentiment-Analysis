@@ -10,6 +10,8 @@
 
 **실제 오분류 사례:** 사용 중 발견한 반어 배송 리뷰, 의류 혼합 리뷰, 숙소 재방문 거절 사례를 [ERROR_CASES.md](ERROR_CASES.md)에 정리했습니다. 높은 확률의 오분류와 부분 실패를 구분했으며, 18개 쉬운 예시의 성공을 일반 성능으로 확대하지 않습니다. [스크린샷 표시값 전사](evidence/error_cases.json)는 새 추론이나 원본 JSON이 아닙니다.
 
+**신규 고정 평가:** 이후 새로운 36개 한국어 댓글(긍정·부정·중립·혼합·반어·간접 불만 각 6개)을 출력 확인 전에 고정해 두 모델을 비교했습니다. [유형별 결과와 한계](EVALUATION_V2.md), [고정 입력·참고 기준](evaluation_suite_v2.json), [전체 원시 결과](evidence/evaluation_suite_v2_results.json), [CSV](evidence/evaluation_suite_v2_results.csv). 참고 기준은 개발/AI 보조로 작성한 잠정 라벨이며 독립 사람 검수 벤치마크가 아닙니다. 평가를 위해 앱·프롬프트·임계값을 변경하지 않았습니다.
+
 > **실행 환경:** 기존 Conda 환경의 DLL 문제는 프로젝트 전용 `.venv` 설치로 해결했습니다. 최신 주 모델·대조 분석·기록·오류 처리는 실제 모델로 검증했습니다. [현재 검증](evidence/verification.json), [과거 OpenJevX 검증](evidence/openjevx_verification_legacy.json), [보고서](REPORT.md)
 
 ## 구현 기능

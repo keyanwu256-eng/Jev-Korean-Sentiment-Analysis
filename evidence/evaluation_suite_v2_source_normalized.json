@@ -1,0 +1,8 @@
+{
+  "description": "Supplementary LF-normalized source hashes derived from byte-verified frozen code for portable Git CRLF/LF checkouts. Original freeze manifest is unchanged.",
+  "original_raw_hashes_verified": true,
+  "normalized_sha256": {
+    "app.py": "ce115975e07215e540fa8ac3a7bc2b2d23a32a544b3d86ed6cf22d40d1086cf8",
+    "sentiment_engine.py": "bc42ad9eb970b6d3ce7b19759ddb10830b5186843b35aea5dd2bf016fb4ebeaf"
+  }
+}
