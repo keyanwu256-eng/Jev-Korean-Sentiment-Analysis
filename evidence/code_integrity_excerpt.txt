@@ -1,0 +1,8 @@
+Observed locally on 2026-11-17, Asia/Seoul.
+Source: Microsoft-Windows-CodeIntegrity/Operational.
+Event ID: 3077. Observed time: 09:57:14.
+Process: Conda jev_project/python.exe.
+Blocked dependency: jev_project/Library/bin/libcblas.dll.
+Message: File did not meet Enterprise signing level requirements or violated code integrity policy.
+Separately, Python import raised an application-control block while importing NumPy _multiarray_umath.
+This is a manually minimized event summary, not the original EVTX export.

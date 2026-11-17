@@ -1,0 +1,59 @@
+Traceback (most recent call last):
+  File "C:\Users\Public\miniconda3\envs\jev_project\Lib\site-packages\numpy\_core\__init__.py", line 24, in <module>
+    from . import multiarray
+  File "C:\Users\Public\miniconda3\envs\jev_project\Lib\site-packages\numpy\_core\multiarray.py", line 11, in <module>
+    from . import _multiarray_umath, overrides
+ImportError: DLL load failed while importing _multiarray_umath: 애플리케이션 제어 정책에서 이 파일을 차단했습니다.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<USER_HOME>\Desktop\Jev_Project\submission_repo\verify_project.py", line 62, in <module>
+    jev = namespace["load_jev"]()
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Public\miniconda3\envs\jev_project\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 762, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Public\miniconda3\envs\jev_project\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 823, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Public\miniconda3\envs\jev_project\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 887, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "app.py", line 50, in load_jev
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<USER_HOME>\.cache\huggingface\hub\models--muthuishere--openjevx\snapshots\5399cb82a1eafad35575a6eaff5e2c5de5a8fc7e\openjevx.py", line 18, in <module>
+    import numpy as np
+  File "C:\Users\Public\miniconda3\envs\jev_project\Lib\site-packages\numpy\__init__.py", line 112, in <module>
+    from numpy.__config__ import show_config
+  File "C:\Users\Public\miniconda3\envs\jev_project\Lib\site-packages\numpy\__config__.py", line 4, in <module>
+    from numpy._core._multiarray_umath import (
+  File "C:\Users\Public\miniconda3\envs\jev_project\Lib\site-packages\numpy\_core\__init__.py", line 85, in <module>
+    raise ImportError(msg) from exc
+ImportError: 
+
+IMPORTANT: PLEASE READ THIS FOR ADVICE ON HOW TO SOLVE THIS ISSUE!
+
+Importing the numpy C-extensions failed. This error can happen for
+many reasons, often due to issues with your setup or how NumPy was
+installed.
+
+We have compiled some common reasons and troubleshooting tips at:
+
+    https://numpy.org/devdocs/user/troubleshooting-importerror.html
+
+Please note and check the following:
+
+  * The Python version is: Python 3.11 from "C:\Users\Public\miniconda3\envs\jev_project\python.exe"
+  * The NumPy version is: "2.4.6"
+
+and make sure that they are the versions you expect.
+
+Please carefully study the information and documentation linked above.
+This is unlikely to be a NumPy issue but will be caused by a bad install
+or environment on your machine.
+
+Original error was: DLL load failed while importing _multiarray_umath: 애플리케이션 제어 정책에서 이 파일을 차단했습니다.
+
