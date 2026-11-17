@@ -1,11 +1,13 @@
-Real models; the comparison failure traceback is intentionally injected by a resilience test.
-test_real_app_and_failed_comparison_do_not_replace_primary (test_korean.RealModelTests.test_real_app_and_failed_comparison_do_not_replace_primary) ... 2026-11-17 14:32:30.789 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+Real local models. The comparison failure below is intentionally injected to test resilience.
+test_hotel_mixed_review_keeps_raw_neutral_and_flags_jev (test_korean.RealModelTests.test_hotel_mixed_review_keeps_raw_neutral_and_flags_jev) ... 2026-11-17 14:48:07.737 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 <USER_HOME>\.cache\huggingface\hub\models--muthuishere--openjevx\snapshots\5399cb82a1eafad35575a6eaff5e2c5de5a8fc7e\openjevx.py:54: ResourceWarning: unclosed file <_io.TextIOWrapper name='<USER_HOME>\\.cache\\huggingface\\hub\\models--muthuishere--openjevx\\snapshots\\5399cb82a1eafad35575a6eaff5e2c5de5a8fc7e\\config.json' mode='r' encoding='cp949'>
   cfg = json.load(open(config))
 ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_real_app_and_failed_comparison_do_not_replace_primary (test_korean.RealModelTests.test_real_app_and_failed_comparison_do_not_replace_primary) ... 2026-11-17 14:48:20.181 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 OpenJevX 대조 분석 실패
 Traceback (most recent call last):
-  File "<USER_HOME>\Desktop\Jev_Project\submission_repo\app.py", line 129, in <module>
+  File "<USER_HOME>\Desktop\Jev_Project\submission_repo\app.py", line 135, in <module>
     **compare_with_jev(jev, review.strip(), result["final_sentence"], QUESTIONS)}
       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\Public\miniconda3\envs\jev_project\Lib\unittest\mock.py", line 1124, in __call__
@@ -21,9 +23,10 @@ ok
 test_truncation_and_sentence_limit_are_explicit (test_korean.RealModelTests.test_truncation_and_sentence_limit_are_explicit) ... ok
 test_user_regression_and_separate_ending (test_korean.RealModelTests.test_user_regression_and_separate_ending) ... ok
 test_final_sentence_and_decimals (test_korean.SentenceTests.test_final_sentence_and_decimals) ... ok
+test_neutral_and_sentence_coexistence_are_separate (test_korean.SentenceTests.test_neutral_and_sentence_coexistence_are_separate) ... ok
 test_uncertain_is_not_neutral (test_korean.SentenceTests.test_uncertain_is_not_neutral) ... ok
 
 ----------------------------------------------------------------------
-Ran 5 tests in 23.984s
+Ran 7 tests in 21.184s
 
 OK

@@ -9,12 +9,14 @@ from datetime import datetime, timezone, timedelta
 import streamlit as st
 from huggingface_hub import hf_hub_download
 from huggingface_hub.errors import LocalEntryNotFoundError
-from sentiment_engine import KoreanSentiment, MODEL_ID as SENTIMENT_ID, REVISION as SENTIMENT_REVISION, compare_with_jev, uncertainty
+from sentiment_engine import KoreanSentiment, MODEL_ID as SENTIMENT_ID, REVISION as SENTIMENT_REVISION, compare_with_jev, uncertainty, sentence_composition
 
 REPO_ID = "muthuishere/openjevx"
 MODEL_REVISION = "5399cb82a1eafad35575a6eaff5e2c5de5a8fc7e"
 logger = logging.getLogger(__name__)
-LABELS = {"positive": "긍정", "negative": "부정", "neutral": "중립 / 혼합"}
+LABELS = {"positive": "긍정", "negative": "부정", "neutral": "중립 / 균형"}
+COMPOSITION_LABELS = {"coexistence_observed": "긍정·부정 공존", "coexistence_not_observed": "공존 미관찰",
+                      "insufficient_evidence": "판단 불확실", "unavailable": "문장 자료 없음"}
 EXAMPLES = {
     "긍정 리뷰": "음식이 정말 맛있고 직원들도 친절했어요. 다음에 꼭 다시 방문하고 싶어요.",
     "부정 리뷰": "음식이 차갑고 직원도 불친절했어요. 가격도 비싸서 다시 가고 싶지 않아요.",
@@ -65,7 +67,7 @@ def choose_example(name):
 def export_history(records):
     output = io.StringIO(newline="")
     writer = csv.writer(output)
-    writer.writerow(["분석 시각", "리뷰", "전체 원시 분류", "전체 확률", "마지막 원시 분류", "마지막 확률", "소요 시간(초)", "주 분석 모델", "마지막 문장", "전체 판단 보류", "마지막 판단 보류", "Jev 전체", "Jev 마지막"])
+    writer.writerow(["분석 시각", "리뷰", "전체 원시 분류", "전체 확률", "마지막 원시 분류", "마지막 확률", "소요 시간(초)", "주 분석 모델", "마지막 문장", "전체 판단 보류", "마지막 판단 보류", "Jev 전체 원시 분류", "Jev 마지막 원시 분류", "문장 감정 구성", "Jev 전체 판단 보류", "Jev 마지막 판단 보류"])
     for record in records:
         answers = record["result"]["answers"]
         review = record["review"]
@@ -80,7 +82,10 @@ def export_history(records):
         fields = row + [record["seconds"], record.get("model", REPO_ID),
                         record.get("final_sentence", ""), uncertainty(answers["overall"]),
                         uncertainty(answers["final"]), comparison.get("overall", {}).get("choice", ""),
-                        comparison.get("final", {}).get("choice", "")]
+                        comparison.get("final", {}).get("choice", ""),
+                        sentence_composition(record["result"])["status"],
+                        uncertainty(comparison["overall"]) if "overall" in comparison else "",
+                        uncertainty(comparison["final"]) if "final" in comparison else ""]
         writer.writerow(["'" + value if isinstance(value, str) and value.lstrip().startswith(("=", "+", "-", "@")) else value
                          for value in fields])
     return output.getvalue().encode("utf-8-sig")
@@ -118,6 +123,7 @@ with analysis_tab:
                     started = time.perf_counter()
                     result = load_korean().analyze(review.strip())
                     record = {"review": review.strip(), "result": result,
+                              "interpretation": sentence_composition(result),
                               "model": SENTIMENT_ID, "revision": SENTIMENT_REVISION,
                               "final_sentence": result["final_sentence"],
                               "seconds": round(time.perf_counter() - started, 2),
@@ -142,6 +148,7 @@ with analysis_tab:
     if "latest" in st.session_state:
         record = st.session_state.latest
         answers = record["result"]["answers"]
+        composition = sentence_composition(record["result"])
         st.divider()
         st.subheader("최근 분석 결과")
         st.text(record["review"])
@@ -153,12 +160,20 @@ with analysis_tab:
         if review.strip() != record["review"]:
             st.info("입력 내용이 변경되었습니다. 아래 결과는 이전에 분석한 리뷰의 결과입니다.")
         st.caption(f"분석 시각: {record['created_at']} · 모델 준비 및 분석: {record['seconds']:.2f}초")
-        for column, key, title in zip(st.columns(2), ("overall", "final"), ("전체 감성", "마지막 평가")):
+        overall_column, composition_column, final_column = st.columns(3)
+        with composition_column:
+            st.metric("문장 감정 구성", COMPOSITION_LABELS[composition["status"]])
+            counts = composition["counts"]
+            st.caption(f"분석한 문장: 긍정 {counts['positive']} · 부정 {counts['negative']} · 중립 {counts['neutral']} · 불확실 {counts['uncertain']}")
+            st.caption("문장별로 명확한 긍정과 부정이 모두 있을 때만 공존으로 표시합니다. 전체 분류와 별개이며, 한 문장 안의 혼합 감정은 놓칠 수 있습니다.")
+        for column, key, title in zip((overall_column, final_column), ("overall", "final"), ("전체 원문 분류", "마지막 문장 평가")):
             with column:
                 answer = answers[key]
                 held = uncertainty(answer)
                 st.metric(title, "판단 불확실" if held else LABELS[answer["choice"]])
-                st.caption(f"모델 원시 분류: {LABELS[answer['choice']]} · 최대 확률 {max(answer['probabilities'].values()):.1%}")
+                st.caption(f"원시 라벨: {answer['choice']} ({LABELS[answer['choice']]}) · 최대 확률 {max(answer['probabilities'].values()):.1%}")
+                if answer["choice"] == "neutral":
+                    st.caption("neutral은 모델의 중립·균형 범주입니다. 혼합 감정이 확인되었다는 뜻은 아닙니다. 옆의 문장 감정 구성을 함께 보세요.")
                 if answer.get("truncated"):
                     st.warning("입력이 512토큰을 넘어 뒷부분이 잘렸습니다.")
                 for label, description in LABELS.items():
@@ -178,20 +193,25 @@ with analysis_tab:
                 for item in sentence_results:
                     st.text(item["text"])
                     st.caption(f"{'판단 불확실 · ' if uncertainty(item) else ''}원시 분류: {LABELS[item['choice']]} · 최대 확률 {item['confidence']:.1%}")
-            strong = {item["choice"] for item in sentence_results if not uncertainty(item)}
-            if {"positive", "negative"} <= strong:
-                st.info("문장별로 긍정과 부정이 함께 관찰됩니다. 전체 리뷰의 단일 라벨과 구분해서 해석하세요.")
+            if composition["status"] == "coexistence_observed":
+                st.info("문장별 긍정·부정 공존이 관찰되었습니다. 중립·균형이라는 전체 원시 분류나 최종 만족도와는 다른 관찰입니다.")
         if record.get("comparison_error"):
             st.warning(record["comparison_error"])
         if record.get("comparison"):
             st.subheader("OpenJevX 대조 결과 — 주 결과와 다른 모델")
             for key, title in (("overall", "전체"), ("final", "마지막 문장")):
                 answer = record["comparison"]["answers"][key]
-                st.text(f"Jev {title}: {LABELS[answer['choice']]} · 최대 확률 {max(answer['probabilities'].values()):.1%}")
+                held = uncertainty(answer)
+                st.text(f"Jev {title}: {'판단 불확실' if held else LABELS[answer['choice']]} · 최대 확률 {max(answer['probabilities'].values()):.1%}")
+                st.caption(f"Jev 원시 라벨: {answer['choice']} · 후보 확률: " + " / ".join(f"{name} {value:.1%}" for name, value in answer['probabilities'].items()))
+                if held:
+                    st.caption("주 모델과 같은 보류 기준을 적용했습니다. 원시 라벨은 확정된 판단이 아닙니다.")
+                if answer["choice"] == "neutral":
+                    st.caption("Jev의 neutral 후보 정의에는 중립과 혼합이 함께 포함됩니다. 문장별 공존 관찰과 구분하세요.")
             st.caption("두 모델의 분류는 다를 수 있습니다. Jev의 결과를 주 모델 결과로 덮어쓰지 않습니다.")
         with st.expander("원본 결과 및 판단 기준"):
-            st.json({"result": record["result"], "comparison": record.get("comparison"), "jev_questions": QUESTIONS})
-        st.download_button("이 결과 JSON 다운로드", json.dumps(record, ensure_ascii=False, indent=2),
+            st.json({"result": record["result"], "interpretation": composition, "comparison": record.get("comparison"), "jev_questions": QUESTIONS})
+        st.download_button("이 결과 JSON 다운로드", json.dumps({**record, "interpretation": composition}, ensure_ascii=False, indent=2),
                            file_name="jev_result.json", mime="application/json")
 
 with history_tab:
@@ -211,7 +231,10 @@ with history_tab:
             with st.expander(f"{record['created_at']} · {record['review'][:45]}"):
                 st.text(record["review"])
                 st.caption("모델: " + record.get("model", REPO_ID + " (이전 기록)"))
-                st.text(f"전체 감성: {LABELS[answers['overall']['choice']]} / 마지막 평가: {LABELS[answers['final']['choice']]}")
+                overall_display = "판단 불확실" if uncertainty(answers["overall"]) else LABELS[answers["overall"]["choice"]]
+                final_display = "판단 불확실" if uncertainty(answers["final"]) else LABELS[answers["final"]["choice"]]
+                st.text(f"전체 원문 분류: {overall_display} / 문장 구성: {COMPOSITION_LABELS[sentence_composition(record['result'])['status']]} / 마지막 문장: {final_display}")
+                st.caption(f"원시 라벨: 전체 {answers['overall']['choice']} / 마지막 {answers['final']['choice']}")
 
 with guide_tab:
     st.subheader("프로젝트 목적")
@@ -219,4 +242,5 @@ with guide_tab:
     st.markdown("- **주 분석**: Horizon-Labs multilingual-sentiment-small (한국어 지원 다국어 감성 모델)\n- **전체 감성**: 한국어 원문 직접 분류\n- **마지막 평가**: 마지막 문장을 추출하여 별도 분류\n- **대조 분석**: 커뮤니티 OpenJevX · 질문을 통한 분류\n- **실행**: 두 모델 모두 로컬 ONNX CPU · 번역 및 공식 API 사용 없음")
     st.subheader("결과를 해석할 때")
     st.write("정확도는 데이터에 따라 달라집니다. 반어법, 이중 부정, 혼합 감성에서는 오분류할 수 있습니다. 문장 분리는 구두점과 줄바꿈에 따른 간단한 규칙이며 마지막 절을 의미적으로 추출하는 방식은 아닙니다. 원시 분류와 판단 보류를 구분합니다.")
+    st.write("전체 원문 분류, 문장별 긍정·부정 공존, 마지막 문장 평가는 서로 다른 관찰입니다. 마지막 문장이 부정적이라고 전체 라벨을 바꾸지 않습니다. 최종 만족도는 별도로 정의하거나 평가하지 않았습니다.")
     st.write("프로젝트 평가에는 사람이 정답을 붙인 긍정·부정·혼합 리뷰를 준비해 모델 결과와 비교하는 방법을 권장합니다.")

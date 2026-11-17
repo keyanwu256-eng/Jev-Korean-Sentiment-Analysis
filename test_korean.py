@@ -1,9 +1,13 @@
 import unittest
+import copy
+import csv
+import io
+import json
 from pathlib import Path
 from unittest.mock import patch
 
 from streamlit.testing.v1 import AppTest
-from sentiment_engine import KoreanSentiment, sentences, uncertainty
+from sentiment_engine import KoreanSentiment, sentences, uncertainty, sentence_composition
 from evaluate_korean import load_app_definitions
 
 
@@ -19,6 +23,18 @@ class SentenceTests(unittest.TestCase):
         self.assertTrue(uncertainty(raw))
         self.assertEqual(raw["choice"], "negative")
         self.assertFalse(uncertainty({"probabilities": {"neutral": 0.9, "negative": 0.05, "positive": 0.05}}))
+
+    def test_neutral_and_sentence_coexistence_are_separate(self):
+        def answer(label, probability=0.9):
+            return {"choice": label, "probabilities": {name: probability if name == label else (1-probability)/2
+                                                       for name in ("positive", "negative", "neutral")}}
+        result = {"answers": {"overall": answer("neutral")}, "sentences": [answer("positive"), answer("negative")]}
+        before = copy.deepcopy(result)
+        self.assertEqual(sentence_composition(result)["status"], "coexistence_observed")
+        self.assertEqual(result, before)
+        self.assertEqual(sentence_composition({"sentences": [answer("neutral")]})["status"], "coexistence_not_observed")
+        self.assertEqual(sentence_composition({"sentences": [answer("positive", 0.4), answer("negative")]})["status"], "insufficient_evidence")
+        self.assertEqual(sentence_composition({})["status"], "unavailable")
 
 
 class RealModelTests(unittest.TestCase):
@@ -53,7 +69,9 @@ class RealModelTests(unittest.TestCase):
         at.button[3].click().run()
         self.assertFalse(at.error)
         self.assertFalse(at.exception)
-        self.assertEqual([metric.value for metric in at.metric], ["부정", "부정"])
+        displayed = {metric.label: metric.value for metric in at.metric}
+        self.assertEqual(displayed["전체 원문 분류"], "부정")
+        self.assertEqual(displayed["마지막 문장 평가"], "부정")
         record = at.session_state.history[0]
         self.assertNotIn("comparison", record)
         self.assertEqual(record["model"], "Horizon-Labs/multilingual-sentiment-small")
@@ -93,9 +111,30 @@ class RealModelTests(unittest.TestCase):
         self.assertFalse(at.exception)
         self.assertFalse(at.session_state.history)
 
+    def test_hotel_mixed_review_keeps_raw_neutral_and_flags_jev(self):
+        at = AppTest.from_file(str(Path(__file__).with_name("app.py")), default_timeout=120).run()
+        text = "위치는 편리하고 직원도 친절했어요. 하지만 방에서 담배 냄새가 심하게 나서 다시 묵고 싶지는 않아요."
+        at.text_area[0].input(text)
+        at.button[3].click().run()
+        self.assertFalse(at.exception)
+        self.assertFalse(at.error)
+        displayed = {metric.label: metric.value for metric in at.metric}
+        self.assertEqual(displayed["전체 원문 분류"], "중립 / 균형")
+        self.assertEqual(displayed["문장 감정 구성"], "긍정·부정 공존")
+        self.assertEqual(displayed["마지막 문장 평가"], "부정")
+        record = at.session_state.history[0]
+        self.assertEqual(record["result"]["answers"]["overall"]["choice"], "neutral")
+        self.assertEqual(record["interpretation"]["status"], "coexistence_observed")
+        self.assertTrue(any(item.value.startswith("Jev 전체: 판단 불확실") for item in at.text))
+        self.assertTrue(any(item.value.startswith("Jev 마지막 문장: 판단 불확실") for item in at.text))
+        csv_bytes = load_app_definitions()["export_history"]([record])
+        row = list(csv.reader(io.StringIO(csv_bytes.decode("utf-8-sig"))))[1]
+        self.assertEqual(row[13], "coexistence_observed")
+        self.assertEqual(row[14:16], ["True", "True"])
+        out = Path(__file__).resolve().parent / "runtime/evaluation"
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "hotel_interpretation_result.json").write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
-import csv
-import io
-import json

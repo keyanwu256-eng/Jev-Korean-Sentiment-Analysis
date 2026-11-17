@@ -21,6 +21,24 @@ def uncertainty(answer, threshold=0.65, margin=0.15):
     return values[0] < threshold or values[0] - values[1] < margin
 
 
+def sentence_composition(result):
+    """A sentence-level observation, never a replacement for the raw label."""
+    items = result.get("sentences", [])
+    counts = {"positive": 0, "negative": 0, "neutral": 0, "uncertain": 0}
+    for item in items:
+        counts["uncertain" if uncertainty(item) else item["choice"]] += 1
+    if not items:
+        status = "unavailable"
+    elif counts["positive"] and counts["negative"]:
+        status = "coexistence_observed"
+    elif counts["uncertain"] or result.get("sentence_limit_applied") or any(item.get("truncated") for item in items):
+        status = "insufficient_evidence"
+    else:
+        status = "coexistence_not_observed"
+    return {"method": "confident_sentence_labels", "status": status, "counts": counts,
+            "scope": "analyzed_sentences_only", "does_not_override_raw_prediction": True}
+
+
 def compare_with_jev(jev, review, final_sentence, questions):
     overall = jev.decide(review, {"overall": questions["overall"]})
     final = jev.decide(final_sentence, {"final": questions["final"]})

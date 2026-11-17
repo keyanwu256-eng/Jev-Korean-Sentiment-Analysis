@@ -1,0 +1,117 @@
+{
+  "review": "위치는 편리하고 직원도 친절했어요. 하지만 방에서 담배 냄새가 심하게 나서 다시 묵고 싶지는 않아요.",
+  "result": {
+    "answers": {
+      "overall": {
+        "type": "choice",
+        "choice": "neutral",
+        "confidence": 0.9024779796600342,
+        "probabilities": {
+          "negative": 0.07548197358846664,
+          "neutral": 0.9024779796600342,
+          "positive": 0.02204003743827343
+        },
+        "tokens": 40,
+        "truncated": false
+      },
+      "final": {
+        "type": "choice",
+        "choice": "negative",
+        "confidence": 0.9509963989257812,
+        "probabilities": {
+          "negative": 0.9509963989257812,
+          "neutral": 0.04737885296344757,
+          "positive": 0.0016247851308435202
+        },
+        "tokens": 26,
+        "truncated": false
+      }
+    },
+    "sentences": [
+      {
+        "text": "위치는 편리하고 직원도 친절했어요.",
+        "type": "choice",
+        "choice": "positive",
+        "confidence": 0.9990972280502319,
+        "probabilities": {
+          "negative": 0.0002340524224564433,
+          "neutral": 0.0006687440327368677,
+          "positive": 0.9990972280502319
+        },
+        "tokens": 16,
+        "truncated": false
+      },
+      {
+        "text": "하지만 방에서 담배 냄새가 심하게 나서 다시 묵고 싶지는 않아요.",
+        "type": "choice",
+        "choice": "negative",
+        "confidence": 0.9509963989257812,
+        "probabilities": {
+          "negative": 0.9509963989257812,
+          "neutral": 0.04737885296344757,
+          "positive": 0.0016247851308435202
+        },
+        "tokens": 26,
+        "truncated": false
+      }
+    ],
+    "final_sentence": "하지만 방에서 담배 냄새가 심하게 나서 다시 묵고 싶지는 않아요.",
+    "sentence_count": 2,
+    "sentence_limit_applied": false,
+    "model": "Horizon-Labs/multilingual-sentiment-small",
+    "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+    "provider": "local_multilingual_sentiment"
+  },
+  "interpretation": {
+    "method": "confident_sentence_labels",
+    "status": "coexistence_observed",
+    "counts": {
+      "positive": 1,
+      "negative": 1,
+      "neutral": 0,
+      "uncertain": 0
+    },
+    "scope": "analyzed_sentences_only",
+    "does_not_override_raw_prediction": true
+  },
+  "model": "Horizon-Labs/multilingual-sentiment-small",
+  "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+  "final_sentence": "하지만 방에서 담배 냄새가 심하게 나서 다시 묵고 싶지는 않아요.",
+  "seconds": 11.97,
+  "created_at": "2026-11-17T14:48:12+09:00",
+  "comparison": {
+    "model": "muthuishere/openjevx",
+    "revision": "5399cb82a1eafad35575a6eaff5e2c5de5a8fc7e",
+    "answers": {
+      "overall": {
+        "type": "choice",
+        "probabilities": {
+          "positive": 0.3915,
+          "negative": 0.2569,
+          "neutral": 0.3516
+        },
+        "confidence": 0.3915,
+        "answer_confidence": 0.3915,
+        "choice": "positive",
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "final": {
+        "type": "choice",
+        "probabilities": {
+          "positive": 0.3115,
+          "negative": 0.2377,
+          "neutral": 0.4508
+        },
+        "confidence": 0.4508,
+        "answer_confidence": 0.4508,
+        "choice": "neutral",
+        "action": {
+          "act_probability": 1.0
+        }
+      }
+    },
+    "final_sentence": "하지만 방에서 담배 냄새가 심하게 나서 다시 묵고 싶지는 않아요."
+  }
+}

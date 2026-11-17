@@ -1,13 +1,13 @@
 {
-  "created_at": "2026-11-17T14:33:27.720282+09:00",
+  "created_at": "2026-11-17T14:49:02.659814+09:00",
   "status": "PASS",
   "primary": "Horizon-Labs/multilingual-sentiment-small",
   "comparison": "muthuishere/openjevx",
   "official_api_used": false,
-  "functional_test_count": 5,
+  "functional_test_count": 7,
   "scope": "Real local models; 18 author-labelled clear cases, six unscored challenges and one reported regression",
-  "app_sha256": "d932f0b1ebe50c4168d13f367783a9dd6306a6d9f7a4832a574b4c083accfcc8",
-  "engine_sha256": "a6c2f2a4d0621ac1b59cf0f9e425046ee4b314403591224def8df0c818b67509",
+  "app_sha256": "ed4065ebc12eb5db043f3c96579fd5805bd9b2206e3acf69400058d1c78053ec",
+  "engine_sha256": "bc42ad9eb970b6d3ce7b19759ddb10830b5186843b35aea5dd2bf016fb4ebeaf",
   "raw_evaluation": "korean_comparison.json",
   "test_log": "korean_tests.txt"
 }

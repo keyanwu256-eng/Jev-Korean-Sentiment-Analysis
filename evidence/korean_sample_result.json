@@ -62,11 +62,23 @@
     "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
     "provider": "local_multilingual_sentiment"
   },
+  "interpretation": {
+    "method": "confident_sentence_labels",
+    "status": "coexistence_not_observed",
+    "counts": {
+      "positive": 0,
+      "negative": 2,
+      "neutral": 0,
+      "uncertain": 0
+    },
+    "scope": "analyzed_sentences_only",
+    "does_not_override_raw_prediction": true
+  },
   "model": "Horizon-Labs/multilingual-sentiment-small",
   "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
   "final_sentence": "다시는 방문하고 싶지 않아요.",
-  "seconds": 9.14,
-  "created_at": "2026-11-17T14:32:38+09:00",
+  "seconds": 1.72,
+  "created_at": "2026-11-17T14:48:20+09:00",
   "comparison": {
     "model": "muthuishere/openjevx",
     "revision": "5399cb82a1eafad35575a6eaff5e2c5de5a8fc7e",

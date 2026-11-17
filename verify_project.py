@@ -2,6 +2,7 @@
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -14,6 +15,7 @@ EVIDENCE.mkdir(exist_ok=True)
 
 
 def main():
+    test_count = 0
     commands = [[sys.executable, "-m", "unittest", "test_korean", "-v"],
                 [sys.executable, "-u", "evaluate_korean.py"]]
     for i, command in enumerate(commands):
@@ -21,6 +23,8 @@ def main():
         output = (result.stdout + result.stderr).replace(str(Path.home()), "<USER_HOME>")
         output = output.replace(str(Path.home()).replace("\\", "\\\\"), "<USER_HOME>")
         if i == 0:
+            match = re.search(r"Ran (\d+) tests?", output)
+            test_count = int(match.group(1)) if match else 0
             output = "Real local models. The comparison failure below is intentionally injected to test resilience.\n" + output
         print(output, flush=True)
         (EVIDENCE / ("korean_tests.txt" if i == 0 else "korean_eval_log.txt")).write_text(output, encoding="utf-8")
@@ -28,11 +32,11 @@ def main():
             (EVIDENCE / "verification.json").write_text(json.dumps({"status": "FAIL", "failed_command": command[1:], "exit_code": result.returncode}, indent=2), encoding="utf-8")
             raise SystemExit(result.returncode)
     shutil.copyfile(ROOT / "runtime/evaluation/korean_comparison.json", EVIDENCE / "korean_comparison.json")
-    for name in ("korean_sample_history.csv", "korean_sample_result.json"):
+    for name in ("korean_sample_history.csv", "korean_sample_result.json", "hotel_interpretation_result.json"):
         shutil.copyfile(ROOT / "runtime/evaluation" / name, EVIDENCE / name)
     report = {"created_at": datetime.now(timezone(timedelta(hours=9))).isoformat(), "status": "PASS",
               "primary": "Horizon-Labs/multilingual-sentiment-small", "comparison": "muthuishere/openjevx",
-              "official_api_used": False, "functional_test_count": 5,
+              "official_api_used": False, "functional_test_count": test_count,
               "scope": "Real local models; 18 author-labelled clear cases, six unscored challenges and one reported regression",
               "app_sha256": hashlib.sha256((ROOT / "app.py").read_bytes()).hexdigest(),
               "engine_sha256": hashlib.sha256((ROOT / "sentiment_engine.py").read_bytes()).hexdigest(),
