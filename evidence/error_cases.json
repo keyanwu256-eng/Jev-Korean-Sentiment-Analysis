@@ -1,0 +1,55 @@
+{
+  "recorded_date": "2026-11-17",
+  "timezone": "Asia/Seoul",
+  "author": "오가암",
+  "source": "User-provided screenshots in development conversation; manually transcribed rounded display values. Not a new inference run.",
+  "original_screenshot_files_in_repository": false,
+  "original_downloaded_json_available": false,
+  "primary_model": "Horizon-Labs/multilingual-sentiment-small",
+  "comparison_model": "muthuishere/openjevx",
+  "selection": "Post-hoc error cases, not an independent benchmark; do not compute general accuracy from this set.",
+  "cases": [
+    {
+      "id": "sarcasm_delivery",
+      "review": "배송이 참 빠르네요. 주문한 지 한 달 만에 도착했어요. 기다리다가 계절이 바뀌었습니다.",
+      "screenshot_analysis_time": "2026-11-17T14:55:06+09:00",
+      "overall": {"raw_label": "positive", "displayed_percentages": {"positive": 96.0, "negative": 1.1, "neutral": 2.9}},
+      "composition": {"display": "판단 불확실", "counts": {"positive": 1, "negative": 0, "neutral": 1, "uncertain": 1}},
+      "last_sentence": "기다리다가 계절이 바뀌었습니다.",
+      "final": {"raw_label": "neutral", "displayed_percentages": {"positive": 7.4, "negative": 15.5, "neutral": 77.1}},
+      "openjevx": {"overall": {"raw_label": "neutral", "abstained": true, "top_percentage": 37.8}, "final": {"raw_label": "negative", "abstained": true, "top_percentage": 45.6}},
+      "human_interpretation": {"overall": "negative sarcasm", "final_in_context": "part of complaint; standalone sentence is ambiguous", "independently_adjudicated": false},
+      "failure_types": ["high_confidence_error", "sarcasm", "context_loss"],
+      "internal_cause_confirmed": false
+    },
+    {
+      "id": "clothes_mixed_with_factual_ending",
+      "review": "옷의 색상과 디자인은 정말 마음에 들어요. 하지만 소재가 거칠어서 피부에 닿으면 불편해요. 구매한 사이즈는 미디엄입니다.",
+      "transcription_note": "Review reconstructed from the previously supplied example. The first word in the screenshot may contain a typo; exact input must be checked against the user's original downloaded JSON.",
+      "screenshot_analysis_time": null,
+      "overall": {"raw_label": "neutral", "displayed_percentages": {"positive": 2.5, "negative": 2.6, "neutral": 94.9}},
+      "composition": {"display": "판단 불확실", "counts": null},
+      "last_sentence": "구매한 사이즈는 미디엄입니다.",
+      "final": {"raw_label": "neutral", "displayed_percentages": {"positive": 0.4, "negative": 0.1, "neutral": 99.5}},
+      "openjevx": null,
+      "human_interpretation": {"overall": "mixed; neutral/balanced is defensible", "composition": "positive and negative coexist", "final": "neutral factual statement", "independently_adjudicated": false},
+      "failure_types": ["partial_failure_in_sentence_composition"],
+      "not_claimed_errors": ["overall_neutral", "final_neutral"],
+      "internal_cause_confirmed": false
+    },
+    {
+      "id": "hotel_indirect_rejection",
+      "review": "직원들이 친절하고 조식도 맛있었어요. 하지만 방음이 안 돼서 밤새 잠을 설쳤어요. 다음에는 다른 숙소를 선택하겠습니다.",
+      "screenshot_analysis_time": "2026-11-17T15:08:14+09:00",
+      "overall": {"raw_label": "neutral", "displayed_percentages": {"positive": 4.6, "negative": 6.5, "neutral": 88.8}},
+      "composition": {"display": "판단 불확실", "counts": {"positive": 1, "negative": 0, "neutral": 1, "uncertain": 1}},
+      "last_sentence": "다음에는 다른 숙소를 선택하겠습니다.",
+      "final": {"raw_label": "neutral", "displayed_percentages": {"positive": 0.5, "negative": 1.3, "neutral": 98.2}},
+      "openjevx": {"overall": {"raw_label": "neutral", "abstained": true, "top_percentage": 39.4}, "final": null},
+      "human_interpretation": {"overall": "mixed, with negative final satisfaction; overall neutral is not categorically wrong", "composition": "positive and negative coexist", "final_in_context": "negative indirect rejection", "independently_adjudicated": false},
+      "failure_types": ["indirect_rejection", "context_loss", "partial_failure_in_sentence_composition", "high_confidence_error"],
+      "internal_cause_confirmed": false
+    }
+  ],
+  "notes": ["Percentages are rounded screen readings, not raw full-precision probabilities.", "Missing or not-visible fields are null, not inferred.", "Human interpretations are discussion references, not validated gold labels.", "No model predictions were changed while documenting these cases."]
+}
