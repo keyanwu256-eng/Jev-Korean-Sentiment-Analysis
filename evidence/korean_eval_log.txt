@@ -1,0 +1,97 @@
+Evaluation 1/18: positive / positive (reference positive)
+Evaluation 2/18: positive / positive (reference positive)
+Evaluation 3/18: positive / positive (reference positive)
+Evaluation 4/18: positive / neutral (reference positive)
+Evaluation 5/18: positive / neutral (reference positive)
+Evaluation 6/18: positive / neutral (reference positive)
+Evaluation 7/18: negative / positive (reference negative)
+Evaluation 8/18: negative / positive (reference negative)
+Evaluation 9/18: negative / neutral (reference negative)
+Evaluation 10/18: negative / positive (reference negative)
+Evaluation 11/18: negative / neutral (reference negative)
+Evaluation 12/18: negative / positive (reference negative)
+Evaluation 13/18: neutral / neutral (reference neutral)
+Evaluation 14/18: neutral / neutral (reference neutral)
+Evaluation 15/18: neutral / neutral (reference neutral)
+Evaluation 16/18: neutral / neutral (reference neutral)
+Evaluation 17/18: neutral / positive (reference neutral)
+Evaluation 18/18: neutral / neutral (reference neutral)
+{
+  "primary": {
+    "count": 18,
+    "correct": 18,
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "confusion_matrix": {
+      "negative": {
+        "negative": 6,
+        "neutral": 0,
+        "positive": 0
+      },
+      "neutral": {
+        "negative": 0,
+        "neutral": 6,
+        "positive": 0
+      },
+      "positive": {
+        "negative": 0,
+        "neutral": 0,
+        "positive": 6
+      }
+    },
+    "coverage": 1.0,
+    "accuracy_among_accepted": 1.0
+  },
+  "openjevx": {
+    "count": 18,
+    "correct": 8,
+    "accuracy": 0.4444444444444444,
+    "macro_f1": 0.3511904761904762,
+    "confusion_matrix": {
+      "negative": {
+        "negative": 0,
+        "neutral": 2,
+        "positive": 4
+      },
+      "neutral": {
+        "negative": 0,
+        "neutral": 5,
+        "positive": 1
+      },
+      "positive": {
+        "negative": 0,
+        "neutral": 3,
+        "positive": 3
+      }
+    },
+    "coverage": 0.0,
+    "accuracy_among_accepted": null
+  },
+  "regression": {
+    "overall": {
+      "type": "choice",
+      "choice": "negative",
+      "confidence": 0.9991105198860168,
+      "probabilities": {
+        "negative": 0.9991105198860168,
+        "neutral": 0.0007755505503155291,
+        "positive": 0.00011387001723051071
+      },
+      "tokens": 32,
+      "truncated": false
+    },
+    "final": {
+      "type": "choice",
+      "choice": "negative",
+      "confidence": 0.9292037487030029,
+      "probabilities": {
+        "negative": 0.9292037487030029,
+        "neutral": 0.06262210756540298,
+        "positive": 0.008174162358045578
+      },
+      "tokens": 13,
+      "truncated": false
+    }
+  },
+  "final_sentence": "다시는 방문하고 싶지 않아요."
+}

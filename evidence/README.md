@@ -1,5 +1,15 @@
 # 증거 자료 안내
 
+## 최신 한국어 주 분석 및 Jev 비교
+
+- `korean_comparison.json`: 사전 고정한 명확한 한국어 18개를 두 모델로 실제 분류한 원시 결과. 혼합/반어 6개 및 알려진 오류 사례는 별도 기록. 새 모델 18/18, OpenJevX 8/18은 작은 자가 작성 테스트의 결과이며 일반 성능으로 확대할 수 없다.
+- `korean_tests.txt`: 실제 로컬 모델을 이용한 5개 기능 테스트. 마지막 문장·불확실성·입력 잘림·기록·대조 실패 처리 확인.
+- `korean_sample_result.json`, `korean_sample_history.csv`: 최신 두 모델 실제 성공 결과와 CSV 내용. 테스트 로그의 `test comparison failure`는 주 모델 결과가 보존되는지 확인하기 위해 의도적으로 주입한 예외다.
+- `verification.json`: 최신 검증 상태와 코드 해시.
+- `openjevx_verification_legacy.json`, `current_app_results.json`, `sample_history.csv`, `sample_result.json`: 개선 이전의 OpenJevX 단일 모델 검증 및 샘플. 최신 주 모델 출력으로 간주하지 않는다.
+
+기존 Notebook 실험, 초기 화면 및 DLL 오류 기록은 아래에 개선 과정의 과거 증거로 보존한다.
+
 ## 기존 실험 자료
 
 - `notebook_recorded_results.json`: 기존 Notebook 셀 10(0부터 센 번호)의 저장된 비교 출력. 참고 정답은 셀 12에서 추출했다. 10개, 일치 6개, 전체 정답 일치 4개, 마지막 평가의 동일 정답 일치 3개를 재집계했다.

@@ -6,6 +6,14 @@
 **정리일:** 2026-11-17 (한국 시간)
 **구현:** Python · Streamlit · OpenJevX · ONNX Runtime CPU
 
+## 한국어 원문 분석 개선 — 최신 버전
+
+한국어 부정 리뷰를 중립으로 분류하는 실제 오류 제보를 받아 모델을 비교했다. 이제 주 분석은 한국어 지원 다국어 감성 모델 Horizon-Labs/multilingual-sentiment-small, Jev는 별도 대조 역할이다. 마지막 문장을 실제로 추출해 별도 평가하고, 낮은 확률은 중립과 구분해 판단을 보류한다. 원시 출력은 수정하지 않는다.
+
+출력 확인 전에 고정한 명확한 한국어 사례 18개에서 새 주 모델 18/18, 기존 OpenJevX 8/18을 관찰했다. 이는 개발자 작성의 작은 기능 점검이며 독립 공개 벤치마크나 일반적인 100% 정확도 주장이 아니다. 혼합·반어 6개 및 사용자 제보 문장은 정확도 계산에서 분리해 공개했다. 실제 모델 기능 테스트 5개가 통과했다.
+
+자세한 방법·원시 확률·라벨·한계는 [KOREAN_IMPROVEMENT.md](KOREAN_IMPROVEMENT.md)와 [korean_comparison.json](evidence/korean_comparison.json)에 있다. 아래의 기존 Notebook 및 단일 Jev 실험은 개선 이전 기록으로 유지하며 새 주 모델 결과와 구분한다. 프로젝트는 이제 한국어 감성 모델과 Jev의 비교 실험이고, 공식 Jev API를 사용하지 않는다.
+
 ## 최종 복구 및 재검증 — 2026-11-17 12:44
 
 아래 본문의 오전 차단 기록 이후, 프로젝트 전용 `.venv`를 생성하고 공식 PyPI 배포 패키지를 설치했다. 기존 Conda 환경이나 Windows 보안 정책은 변경하지 않았다. 같은 버전의 NumPy·ONNX Runtime·tokenizers가 새 환경에서 정상 로딩됐고 실제 모델 분석도 복구됐다.

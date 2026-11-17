@@ -1,0 +1,105 @@
+{
+  "review": "음식이 차갑고 주문한 메뉴도 잘못 나왔어요. 다시는 방문하고 싶지 않아요.",
+  "result": {
+    "answers": {
+      "overall": {
+        "type": "choice",
+        "choice": "negative",
+        "confidence": 0.9991105198860168,
+        "probabilities": {
+          "negative": 0.9991105198860168,
+          "neutral": 0.0007755505503155291,
+          "positive": 0.00011387001723051071
+        },
+        "tokens": 32,
+        "truncated": false
+      },
+      "final": {
+        "type": "choice",
+        "choice": "negative",
+        "confidence": 0.9292037487030029,
+        "probabilities": {
+          "negative": 0.9292037487030029,
+          "neutral": 0.06262210756540298,
+          "positive": 0.008174162358045578
+        },
+        "tokens": 13,
+        "truncated": false
+      }
+    },
+    "sentences": [
+      {
+        "text": "음식이 차갑고 주문한 메뉴도 잘못 나왔어요.",
+        "type": "choice",
+        "choice": "negative",
+        "confidence": 0.9926263689994812,
+        "probabilities": {
+          "negative": 0.9926263689994812,
+          "neutral": 0.006764160934835672,
+          "positive": 0.0006095116259530187
+        },
+        "tokens": 21,
+        "truncated": false
+      },
+      {
+        "text": "다시는 방문하고 싶지 않아요.",
+        "type": "choice",
+        "choice": "negative",
+        "confidence": 0.9292037487030029,
+        "probabilities": {
+          "negative": 0.9292037487030029,
+          "neutral": 0.06262210756540298,
+          "positive": 0.008174162358045578
+        },
+        "tokens": 13,
+        "truncated": false
+      }
+    ],
+    "final_sentence": "다시는 방문하고 싶지 않아요.",
+    "sentence_count": 2,
+    "sentence_limit_applied": false,
+    "model": "Horizon-Labs/multilingual-sentiment-small",
+    "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+    "provider": "local_multilingual_sentiment"
+  },
+  "model": "Horizon-Labs/multilingual-sentiment-small",
+  "revision": "e60eb86fd9e5bdd8c097bf6d6e75dade85a1ccac",
+  "final_sentence": "다시는 방문하고 싶지 않아요.",
+  "seconds": 9.14,
+  "created_at": "2026-11-17T14:32:38+09:00",
+  "comparison": {
+    "model": "muthuishere/openjevx",
+    "revision": "5399cb82a1eafad35575a6eaff5e2c5de5a8fc7e",
+    "answers": {
+      "overall": {
+        "type": "choice",
+        "probabilities": {
+          "positive": 0.3103,
+          "negative": 0.2717,
+          "neutral": 0.418
+        },
+        "confidence": 0.418,
+        "answer_confidence": 0.418,
+        "choice": "neutral",
+        "action": {
+          "act_probability": 1.0
+        }
+      },
+      "final": {
+        "type": "choice",
+        "probabilities": {
+          "positive": 0.3569,
+          "negative": 0.1724,
+          "neutral": 0.4707
+        },
+        "confidence": 0.4707,
+        "answer_confidence": 0.4707,
+        "choice": "neutral",
+        "action": {
+          "act_probability": 1.0
+        }
+      }
+    },
+    "final_sentence": "다시는 방문하고 싶지 않아요."
+  }
+}

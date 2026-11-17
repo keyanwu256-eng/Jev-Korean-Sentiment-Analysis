@@ -1,0 +1,29 @@
+Real models; the comparison failure traceback is intentionally injected by a resilience test.
+test_real_app_and_failed_comparison_do_not_replace_primary (test_korean.RealModelTests.test_real_app_and_failed_comparison_do_not_replace_primary) ... 2026-11-17 14:32:30.789 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<USER_HOME>\.cache\huggingface\hub\models--muthuishere--openjevx\snapshots\5399cb82a1eafad35575a6eaff5e2c5de5a8fc7e\openjevx.py:54: ResourceWarning: unclosed file <_io.TextIOWrapper name='<USER_HOME>\\.cache\\huggingface\\hub\\models--muthuishere--openjevx\\snapshots\\5399cb82a1eafad35575a6eaff5e2c5de5a8fc7e\\config.json' mode='r' encoding='cp949'>
+  cfg = json.load(open(config))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+OpenJevX 대조 분석 실패
+Traceback (most recent call last):
+  File "<USER_HOME>\Desktop\Jev_Project\submission_repo\app.py", line 129, in <module>
+    **compare_with_jev(jev, review.strip(), result["final_sentence"], QUESTIONS)}
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Public\miniconda3\envs\jev_project\Lib\unittest\mock.py", line 1124, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Public\miniconda3\envs\jev_project\Lib\unittest\mock.py", line 1128, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Public\miniconda3\envs\jev_project\Lib\unittest\mock.py", line 1183, in _execute_mock_call
+    raise effect
+RuntimeError: test comparison failure
+ok
+test_truncation_and_sentence_limit_are_explicit (test_korean.RealModelTests.test_truncation_and_sentence_limit_are_explicit) ... ok
+test_user_regression_and_separate_ending (test_korean.RealModelTests.test_user_regression_and_separate_ending) ... ok
+test_final_sentence_and_decimals (test_korean.SentenceTests.test_final_sentence_and_decimals) ... ok
+test_uncertain_is_not_neutral (test_korean.SentenceTests.test_uncertain_is_not_neutral) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 23.984s
+
+OK
